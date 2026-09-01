@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Pass 1 sitemap: the homepage only.
+  Add /pricing/, /science/ and /app/ here as each page is finished in pass 2.
+  If /knowledge/ and /success-stories/ are migrated (see README § The SEO
+  decision), their URLs belong in this file too — or in a second sitemap
+  referenced from robots.txt.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://reveri.com/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
