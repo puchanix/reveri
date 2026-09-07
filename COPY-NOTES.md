@@ -1,129 +1,132 @@
-# Homepage copy notes
+# Homepage copy notes — v2
 
-Every decision on the page, traced back to the messaging framework
-(`reveri-context` → `references/marketing/messaging-framework.md`) and the
-packaging brief. Written so the GTM hire can inherit this without re-deriving it.
+Every decision on the page, traced to the messaging framework
+(`reveri-context` → `references/marketing/messaging-framework.md`), the packaging
+brief, and the Customer & Targeting review (4 Sep 2026). Written so the GTM hire
+can inherit this without re-deriving it.
 
 Framework version in force: **v1.1**. Where this file and the framework disagree,
-the framework wins.
+the framework wins — except for three items flagged below as pending amendments.
+
+---
+
+## What changed from v1, and why
+
+| Change | Driver |
+|---|---|
+| **Pain → stress as the lead condition** | Pain-led creative on cold audiences is one of only two ⛔ genuinely-disproven items in four years. The homepage is a cold surface. Pain is also 4.4% of stated goals and 3.7% of sessions. |
+| **Sleep is second, not first, despite being the biggest franchise** | Sleep captures **no intensity scores at all**. Leading with it would mean leading with the one condition we cannot evidence, on a page whose argument is "checkable, not adjectival." |
+| **Proof strip added directly below the hero** | The npj paper was buried. Credibility now lands before the product explanation. |
+| **77% / 84% / 90% removed entirely** | They were unsourced and carried visible TODOs. The npj figures are peer-reviewed, published, and stronger. Problem solved by replacement rather than by sourcing. |
+| **"He remembers" / "builds on your last" removed** | Two problems: it implied David personally knows the member, and our own npj paper found **no longitudinal improvement across sessions**. Memory makes each session more personal, not more effective. |
+| **"Not another library of recordings" moved into screen two** | The clearest category contrast we have, and now backed by a published finding rather than an assertion. |
+| **CTA is experiential, not commercial** | "Try your first session free" rather than "Start your free 7-day trial". Trial terms moved to the line beneath. |
+| **Store badges demoted to a text line** | Web checkout converts trials at 45.7% vs 36.4% and is worth roughly double per user. Nothing should compete with it visually. |
+| **Hypnotizability test kept prominent** | "Are you hypnotizable?" is the lowest-CPA creative angle on record, and test-taker→signup has never once been measured. |
+| **Hypno CTA now names David** | "Take Dr. Spiegel's test" beat "Personalize your plan" by **40%** in the quiz onboarding test. |
+| **Type and contrast raised throughout** | 56.6% of paying members are 45+ and conversion rises monotonically with age through 65+. Base 18px, secondary never below 15.5px, all body copy AAA. |
+| **"No drugs. No side effects." → "Natural — nothing to take, no side effects."** | Testing found "natural remedies" outperforms "no side effects", "no medication" and "drug-free". |
+| **Price removed from JSON-LD** | Several price arms run simultaneously by design; a stale figure surfaces in search results. |
+| **New section: the floating place** | Internally the stickiest moment in the session and the clearest differentiator, and almost entirely unused in marketing. |
+| **New section: Live with David** | A real doctor, live, monthly — structurally unavailable to a competitor built on synthetic personalities. |
 
 ---
 
 ## The hero
 
 > **A personal session with Dr. Spiegel — anytime.**
-> Your mind can change how your body feels. Whether that's chronic pain, sleepless
-> nights, or stress that won't let go — Stanford's Dr. David Spiegel guides you
-> through it, in about ten minutes, on your phone.
+> Interactive sessions for stress, sleeplessness and pain that respond to what you
+> say and start where your last one ended. About ten minutes, whenever you need one.
 > *When nothing else has worked.*
 
-- **Headline is the Primary Frame (§5)** — post-cutover, it is now literally true:
-  every session is a session with David.
-- **Mode C, outcome-led.** §4 puts profile-level lead copy at Mode C by default, so
-  the mechanism word doesn't appear above the fold. "Hypnosis" first appears far
-  down the page, in the study citations and the Huberman quote, where the
-  credibility to carry it already exists.
-- **Sub-headline is the §7 hybrid pattern** — universal mechanism hook, then the
-  condition-specific follow, so an undifferentiated audience self-identifies
-  instead of being guessed at.
-- **"sleepless nights", not "sleep."** §7's word rule: the short form only survives
-  inside the three-item list construction. This sentence breaks that pattern, so it
-  takes the long form.
-- **Recognition is the closer, not the opener.** §1 permits this in *structured*
-  short-form as long as recognition is genuinely doing work somewhere in the
-  hierarchy. "When nothing else has worked" is the current App Store subtitle, and
-  it earns its place as the line the eye lands on last.
-- **"Stanford's Dr. David Spiegel"**, never "psychiatrist" — §5, consumer surface.
-- Trial and rating sit in the trust line, below the CTAs. §5's regulatory note is
-  explicit that the free trial is a closer, not a headline claim.
+- **Headline is the Primary Frame (§5)**, post-cutover, now literally true.
+- **The subhead now states how the product behaves**, not what category it is in.
+  That was the main gap against The Path: it answers *what is this* and *why is it
+  different* in one sentence rather than making the reader scroll for the second.
+- **Mode C, outcome-led** — §4 puts profile-level lead copy at Mode C by default,
+  so the mechanism word stays out of the hero. "Hypnosis" first appears in the
+  category-contrast headline in screen two, where the proof strip has already
+  bought the credibility to carry it.
+- **"sleeplessness", not "sleep"** — §7's word rule; this construction isn't the
+  three-item list, so it takes the long form.
+- **"When nothing else has worked" retained** — it is the current App Store
+  subtitle, and cutting it here would create exactly the cross-surface
+  inconsistency §4 exists to prevent. **Still open:** it reads last-resort, which
+  suits pain better than stress. The recognition passage that made this worse has
+  been cut entirely; the line alone is defensible, but it's the next thing to test.
+- **Single primary CTA**, with the test as a text link beneath rather than a second
+  button. Two equal buttons create indecision.
 
-### The Stanford rule
+## The proof strip
 
-Stanford is **never used on its own** — only attached to David's credential, in one
-of two forms: **"Stanford's Dr. David Spiegel"** or **"David Spiegel, Stanford
-University"**. No "Developed at Stanford", no "Stanford-backed", no "Stanford
-research" as a standalone phrase.
+Four figures, all publicly citable — the npj paper is open literature and the
+rating is on the store listing. **No internal-only numbers appear here**, which
+matters because the targeting review is marked not-for-distribution.
 
-All seven uses on the page are compliant as of this pass. Worth re-checking on every
-copy edit — it's an easy one to reintroduce, because the standalone form is shorter
-and reads punchier. It's also the form that borrows the institution's authority
-without the person, which is the reason for the rule.
+## Category contrast
 
-## The recognition passage
+Framework's approved Mode B reframing ("a state of highly focused concentration")
+does the mechanism work later on the page. Here the contrast is behavioural: a
+recording plays the same way for everyone; a session asks. The published finding
+that **interactive sessions produced significantly greater relief** turns this from
+positioning into evidence — it is the strongest single sentence on the page.
 
-Full §1 long-form order: recognition → mechanism/authority → promise, aimed at
-Entry Point 01 (the Exhausted Seeker). It opens on the specific texture of failed
-alternatives — the second opinion, the prescription, the meditation app opened four
-times — before it makes a single claim, then turns on Dr. Spiegel and only then
-reaches the promise ("most people feel a meaningful shift in their first one" —
-approved Fast-pillar phrasing family).
-
-"None of it was unreasonable. It just didn't hold." is doing the §2 Skeptic work:
-it declines to disparage what they already tried, which is what earns the next
-paragraph a hearing.
+Tatyana's App Store review ("the interactive mode is almost like the doctor is in
+the room with you") is placed here rather than in the testimonial block because it
+proves the differentiation claim in a member's own words.
 
 ## Product section
 
-Brief: *show the product, don't describe it.* Three live HTML/CSS phone mockups —
-Today with the memory line, the session close with David's note, and the relief
-path — rendered from the Plan artifact's design language and copy deck verbatim.
-No abstract three-step diagram anywhere on the page.
+Three live HTML/CSS mockups, copy taken from the Plan artifact's copy deck. Now
+stress-led: the Today card is "Taking the edge off today", relief leads with
+Stress. The three ideas are *it responds to you* / *it's there when you need it* /
+*your own evidence*.
 
-Post-cutover claims are live here: "one session, chosen for you", "he remembers",
-"every session builds on your last". These were the gated items; per your call they
-ship now rather than waiting on the ~Sep 15 flip.
+Memory is now worded as **"it starts where the last one ended"** — personalisation,
+not escalation. Do not reintroduce compounding language.
 
 ## How a session works
 
-The Effortless pillar, written to §4's accuracy constraint: sessions are
-*interactive*, so the copy never says "just relax" or "nothing to do but listen."
-Step 2 uses "a state of highly focused concentration" — the approved Mode B
-reframing — which lets the mechanism be explained without spending the word
-"hypnosis" before the evidence section has earned it.
+Headline is **"Dr. Spiegel asks. You answer. Your mind does the rest."** This is
+better than the framework's approved "Get comfortable. Dr. Spiegel does the rest."
+— it preserves member agency, and it is more accurate now that sessions open with a
+brief survey and every session has an interactive element. Flagged below as a
+proposed framework amendment.
+
+## The floating place
+
+Concrete, ownable, and nothing a synthetic-therapist competitor can imitate.
+**Verify the 7,500 figure before launch** — it comes from internal product data and
+should be refreshed at launch.
 
 ## Evidence
 
-- Three headline percentages are a **KPI row of stat tiles**, not a bar chart:
-  three unrelated numbers have no shared scale to compare on.
-- **Each one visibly displays its own TODO on the page.** Not a code comment — the
-  page currently tells a reader the number is unattributed. That is intentional
-  pressure to fill them in or cut them before launch.
-- **The pre→post chart is deliberately absent**, with a placeholder comment in the
-  HTML explaining what to generate (BigQuery, via `querying-reveri`: average pre/post
-  reported intensity, share of change in the first five minutes, n and method
-  labelled on the figure). Mocking up a fake chart in the evidence section is the
-  one thing this section cannot survive.
-- **Two real, checkable, linked studies**, both with Spiegel as an author — the
-  2017 *Cerebral Cortex* imaging paper and the 2000 *Lancet* randomised trial. This
-  is the "legible artifacts, not adjectives" counter to The Path's manufactured
-  proof tokens: ours link out to PubMed and can be checked.
-- Hypnotic variability is stated plainly rather than hidden, which sets up the free
-  test as the honest next step instead of a gimmick.
+- Rebuilt entirely around the npj paper. Three findings as stat tiles (three
+  unrelated measures have no shared scale, so no chart).
+- **The limitations are stated on the page**: observational, no control group, and
+  relief consistent rather than compounding. That paragraph is the whole
+  differentiation strategy in miniature — it is the thing a manufactured proof
+  token can never do, and it pre-empts the exact criticism a skeptic would reach
+  for. Do not let anyone edit it out for being off-message.
+- **The pre→post chart remains deliberately absent.** The npj figures do the job;
+  a BigQuery-derived chart can be added later with n and method on the figure.
 
-## Testimonials
+## Members and validators
 
-Three App Store reviews carried verbatim from the current site, chosen because each
-one **supplies its own before state in the member's own words** — severe chronic
-pain; pain at an 8; had tried the other apps. The `.before` label above each quote
-only ever restates what the quote itself says.
-
-No before-state was invented for any card. When the deduplicated before→after
-library exists, swap these out — §1 is right that the before state is the engine,
-and these three are the best available approximation, not the real thing.
-
-## Validators
-
-Huberman, Ferriss, Rich Roll and Mayim Bialik are kept but placed **below** the
-product story and the evidence, per the brief. They are corroboration, not the
-argument.
+**Open item.** The current site's review set is pain-weighted and this page now
+leads with stress. Two of the three member cards should be replaced with a stress
+story and a sleep story before launch, keeping the before→after structure. Do not
+write a before-line the member's own words don't support — that constraint is why
+the third card is currently a generic six-month review rather than a fabricated
+stress story.
 
 ## Boundaries
 
-Three plain declarations rather than buried legal: complement not replacement,
-responsiveness genuinely varies, and what happens when a session meets real
-distress. §8's "corporate hedges we reject" rules out "may help with" and a
-standalone "results may vary" — the variability statement here is specific and
-owned instead.
+Rewritten. The v1 claim that sessions "recognise when someone is in crisis and
+respond with real resources" is gone; the section now says plainly that Reveri is
+**not** crisis support and points elsewhere. Ariel confirmed the protocol question
+in the targeting review is out of date, but understating here costs nothing and
+overstating on this topic is the worst available error.
 
 ---
 
@@ -131,20 +134,47 @@ owned instead.
 
 | Bright line | Status |
 |---|---|
-| "treats / cures / diagnoses / eliminates" | Not present. "Relief from", "helps", "change how your body feels" throughout. |
-| Suggesting replacement of medication or medical care | Not present. Explicitly contradicted in the Boundaries section and the footer. |
-| "Guaranteed" / results for everyone | Not present. "Most people" throughout; variability stated outright. |
-| Wellness clichés — journey, holistic, transform your life, self-care, mindfulness | None used. ("transform" appears once, inside a verbatim Rich Roll quote — leave it; it's his sentence, in quotation marks.) |
-| Corporate hedges — "may help with", "we believe", stacked qualifiers | None used. |
-| "Psychiatrist" on a consumer surface | Not used. Reserved for `/science/`, which §5 classes as a depth surface. |
+| "treats / cures / diagnoses / eliminates" | Not present as claims. The three scanner hits are all the footer disclaimer *negating* them. |
+| Suggesting replacement of medication or medical care | Not present; explicitly contradicted in Boundaries and the footer. |
+| "Guaranteed" / results for everyone | Not present. Variability stated outright, twice. |
+| Wellness clichés | None. ("transform" appears once inside a verbatim Rich Roll quote — leave it.) |
+| Corporate hedges | None. |
+| "Psychiatrist" on a consumer surface | Not used. Reserved for `/science/`. |
+| **Stanford rule** | All uses attached to David — "Stanford's Dr. David Spiegel" or "David Spiegel, Stanford University". Never standalone. Re-check on every edit; the standalone form is shorter and reads punchier, which is why it keeps creeping back. |
 
-## Open verifications
+## Three pending framework amendments — need CEO sign-off
+
+The framework versions changes and requires sign-off, so these are flagged rather
+than quietly applied.
+
+1. **Retire "The science of hypnosis is settled"** (approved Proven-pillar
+   phrasing, §3). Replaced on the page with "Studied for decades. Now validated at
+   digital scale." We no longer need to assert consensus — we can cite scale.
+2. **Add "Dr. Spiegel asks. You answer. Your mind does the rest."** to the
+   Effortless pillar, alongside or in place of "Get comfortable. Dr. Spiegel does
+   the rest."
+3. **Reconsider the §7 pain-first acquisition logic.** The four arguments for
+   pain-led acquisition are now contradicted by the record: pain-led cold creative
+   is disproven, pain is 3.7% of sessions, and stress produces materially more
+   measured relief. This page assumes stress-led; the framework still says
+   pain-led.
+
+## Open verifications before launch
 
 | Item | Where | Needed from |
 |---|---|---|
-| 77% / 84% / 90% — source, n, method | Evidence tiles (visible TODO on page) | Marcel / research file |
-| "Roughly two thirds of adults" | Hypnotizability section (flagged in HTML) | Citable source, or soften |
-| David's quote in "How a session works" | Constructed from approved credential language | David's sign-off |
-| Session audio clip | `assets/session-clip.mp3` — silent placeholder | David's approval |
 | Analytics snippet | `<head>` of `index.html` | Live site or Marcel |
-| 4.5★ / 4,400+ ratings | Hero trust line | Verified 1 Sep 2026 against the App Store listing (4.5, 4.4K). Re-check at launch. |
+| 7,500 floating places / 62% water | The floating place section | Confirm safe to publish; refresh number |
+| Stress + sleep testimonials | Member cards | Support / review mining |
+| David's quote | The doctor section | David's sign-off — batch with portrait and clip asks, he is the only spokesperson and that is a recorded constraint |
+| Session audio clip | `assets/session-clip.mp3` — silent placeholder | David's approval |
+| Live-with-David cadence | "Once a month" | Confirm it is committed before publishing it |
+| 4.5★ / 4,400+ ratings | Hero + proof strip | Verified 1 Sep 2026 against the App Store listing. Re-check at launch. |
+
+## No A/B infrastructure yet
+
+Several open questions on this page want a test — the hypnosis word in the hero,
+"When nothing else has worked", experiential vs commercial CTA. A static site on
+Vercel has no experimentation layer. Decide the mechanism (Edge Middleware split, a
+client-side flag, or sequential tests read off analytics) before writing variants.
+Given traffic volumes, sequential is probably the honest answer.

@@ -3,9 +3,11 @@
 The rebuilt Reveri website. Pure static — one `.html` file per page, all CSS inline
 per page, no framework and no build step. Vercel deploys it exactly as it sits.
 
-**Pass 1 status:** the homepage is finished. `/pricing/`, `/science/` and `/app/`
+**Pass 2 status:** the homepage is finished — rebuilt stress-led, with the
+peer-reviewed proof strip below the hero and the page restructured so credibility
+lands before the product explanation. `/pricing/`, `/science/` and `/app/`
 exist as `noindex` placeholders so the homepage's links don't 404 during review;
-they get built in pass 2.
+they get built next.
 
 ---
 
@@ -35,10 +37,12 @@ Ordered by how badly it hurts to miss.
       `<head>`. Paste the existing Segment/GA snippet from the live Squarespace
       site — or get it from Marcel. Without it the web checkout funnel loses
       attribution the moment DNS moves.
-- [ ] **The three outcome stats (77% / 84% / 90%).** Each tile on the homepage
-      currently shows `TODO — source, sample size, and how it was measured`
-      *on the page, visibly*. That's deliberate: shipping them bare is the exact
-      failure this page is built to avoid. Fill in method and n, or cut them.
+- [ ] **Stress and sleep testimonials.** The page now leads with stress; the member
+      cards are still weighted to the old pain-led set. Two of three need replacing.
+      (The 77/84/90 stats are gone — the peer-reviewed npj figures replaced them.)
+- [ ] **Confirm the floating-place figures** (7,500+ places, 62% water) are safe to
+      publish and refresh them at launch. They come from internal product data.
+- [ ] **Confirm monthly Live with David is committed** before the page promises it.
 - [ ] **Decide the `/knowledge/` question.** See below — this is the big one.
 - [ ] **David's portrait** at `assets/david-spiegel.jpg`, and the approved session
       clip at `assets/session-clip.mp3` (currently 20 seconds of silence).
@@ -46,8 +50,6 @@ Ordered by how badly it hurts to miss.
 - [ ] **David's sign-off on the quote** in the "How a session works" section. It is
       assembled from approved credential language, not a sourced verbatim quote —
       it's flagged in the HTML.
-- [ ] **Verify "roughly two thirds of adults"** in the hypnotizability section
-      against a citable source, or soften it to "most adults". Also flagged inline.
 - [ ] **Confirm the 301 map** in `vercel.json` against the live sitemap once more
       at cutover, in case anything moved.
 
@@ -93,7 +95,7 @@ index.html          the homepage — finished
 pricing/            placeholder (noindex)
 science/            placeholder (noindex)
 app/                placeholder (noindex)
-support/ terms/ privacy/   placeholders (noindex) — migrate real content in pass 2
+support/ terms/ privacy/   placeholders (noindex) — migrate real content next
 assets/             favicon, silent audio placeholder, asset checklist
 vercel.json         301/302 map from retired Squarespace paths + security headers
 sitemap.xml         homepage only for now
@@ -111,6 +113,13 @@ COPY-NOTES.md       every copy decision, traced to the messaging framework
 - The phone mockups are live HTML/CSS, not screenshots. They use the *app's* light
   palette (`--app-*` tokens) inside the dark site so the product screens read as
   real. When the app's UI changes, edit the markup — no re-export.
-- Every unverified claim carries a visible `TODO` on the page, not a silent one in
-  a comment. If you'd be embarrassed for a member to see it, that's the point:
-  it should be uncomfortable to ship.
+- **Type is set for the person who actually pays.** 56.6% of members are 45+ and
+  conversion rises monotonically with age through 65+. Base type is 18px, secondary
+  text never drops below 15.5px, every body colour clears AAA contrast, and tap
+  targets are 48px or larger. Do not shrink type to fit more in.
+- Unverified claims are flagged, not shipped quietly. Anything still needing a
+  source carries an HTML comment and a row in COPY-NOTES.md; anything that would
+  mislead a reader if wrong gets cut rather than caveated.
+- The limitations paragraph in the evidence section is load-bearing, not a legal
+  afterthought. Stating what the study doesn't show is the differentiation strategy
+  — don't let it get edited out for being off-message.

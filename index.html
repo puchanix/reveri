@@ -4,21 +4,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Reveri — A personal session with Dr. Spiegel, anytime</title>
-<meta name="description" content="Relief from chronic pain, stress, and sleeplessness — guided by Stanford's Dr. David Spiegel. Ten minutes. No drugs, no side effects. Free 7-day trial.">
+<meta name="description" content="Interactive sessions with Stanford's Dr. David Spiegel for stress, sleeplessness and pain. They respond to you and start where your last one ended. About ten minutes. Studied in 84,395 members.">
 <link rel="canonical" href="https://reveri.com/">
 
-<!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Reveri">
 <meta property="og:url" content="https://reveri.com/">
 <meta property="og:title" content="Reveri — A personal session with Dr. Spiegel, anytime">
-<meta property="og:description" content="Relief from chronic pain, stress, and sleeplessness — guided by Stanford's Dr. David Spiegel. Ten minutes. No drugs, no side effects.">
+<meta property="og:description" content="Interactive sessions with Stanford's Dr. David Spiegel for stress, sleeplessness and pain. About ten minutes. Studied in 84,395 members.">
 <meta property="og:image" content="https://reveri.com/assets/og-home.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Reveri — A personal session with Dr. Spiegel, anytime">
-<meta name="twitter:description" content="Relief from chronic pain, stress, and sleeplessness — guided by Stanford's Dr. David Spiegel.">
+<meta name="twitter:description" content="Interactive sessions with Stanford's Dr. David Spiegel for stress, sleeplessness and pain.">
 <meta name="twitter:image" content="https://reveri.com/assets/og-home.jpg">
 
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -28,31 +27,38 @@
      ANALYTICS — REQUIRED BEFORE LAUNCH
      Paste the existing Segment / GA snippet from the live Squarespace
      site (or get it from Marcel) directly below this comment.
-     Do not launch without it: the web checkout funnel attribution
-     depends on it. See README.md § Before you deploy.
+     Web checkout is 46% of MRR — do not move DNS without this.
      =================================================================== -->
 <!-- <script>ANALYTICS SNIPPET GOES HERE</script> -->
 
 <style>
 /* ============================================================
    REVERI — design tokens
-   Brand: Mother Design. Dark purple ground, violet→pink
-   gradient, neon lime accent. Phone mockups use the app's own
-   light palette so product screens read as the real thing.
+
+   Two deliberate constraints in this pass:
+   1. The paying member skews old. 56.6% of members are 45+ and
+      conversion rises monotonically with age through 65+. Base
+      type is 18px, secondary text never drops below 15.5px,
+      body copy sits above 7:1 contrast, and tap targets are 48px.
+      Do not shrink type to fit more in — the person who pays
+      needs to be able to read it.
+   2. Brand is Mother Design: dark purple ground, violet→pink
+      gradient, neon lime accent. Phone mockups use the app's own
+      light palette so product screens read as the real thing.
    ============================================================ */
 :root{
   /* site ground */
   --ink:#0D0817;
   --ink-2:#150E27;
-  --surface:#1C1433;
-  --surface-2:#241A3F;
-  --line:rgba(255,255,255,.10);
-  --line-2:rgba(255,255,255,.16);
+  --surface:#1E1536;
+  --surface-2:#271C44;
+  --line:rgba(255,255,255,.13);
+  --line-2:rgba(255,255,255,.22);
 
-  /* site text */
-  --text:#F4F1FA;
-  --text-2:#BEB3D2;
-  --muted:#8C81A6;
+  /* site text — lifted for older readers */
+  --text:#F6F3FB;
+  --text-2:#CBC2DC;
+  --muted:#A79CC0;
 
   /* brand */
   --violet:#7A3FF2;
@@ -61,21 +67,21 @@
   --lime:#C9F65A;
   --grad:linear-gradient(120deg,#7A3FF2 0%,#A845D8 48%,#E85D9E 100%);
 
-  /* app palette — used inside phone mockups only */
+  /* app palette — inside phone mockups only */
   --app-page:#FBF9F4;
   --app-card:#FFFFFF;
   --app-ink:#221E2C;
-  --app-gray:#6E6878;
-  --app-muted:#AAA4B2;
+  --app-gray:#615B6E;
+  --app-muted:#A19BAB;
   --app-purple:#3E2A75;
   --app-purplemid:#5B2D8E;
-  --app-accent:#7A3FF2;
+  --app-accent:#6A32E0;
   --app-lav:#EDE7F8;
   --app-line:#E5E0D6;
 
   --serif:Georgia,'Times New Roman',serif;
   --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
-  --maxw:1140px;
+  --maxw:1180px;
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
@@ -86,264 +92,296 @@ body{
   background:var(--ink);
   color:var(--text);
   font-family:var(--sans);
-  font-size:17px;
-  line-height:1.62;
+  font-size:18px;
+  line-height:1.65;
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
 }
 
 img{max-width:100%;display:block}
 a{color:inherit}
-:focus-visible{outline:2px solid var(--lime);outline-offset:3px;border-radius:4px}
+:focus-visible{outline:3px solid var(--lime);outline-offset:3px;border-radius:4px}
 
-.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
-.narrow{max-width:760px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px}
+.narrow{max-width:780px}
 
 /* ---------- type ---------- */
-.display{font-family:var(--serif);font-style:italic;font-weight:400;line-height:1.1;text-wrap:balance;letter-spacing:-.01em}
-h1.display{font-size:clamp(38px,6.2vw,68px)}
-h2.display{font-size:clamp(30px,4.4vw,46px)}
-h3.display{font-size:clamp(23px,2.6vw,30px)}
-.eyebrow,p.eyebrow{font-family:var(--sans);font-style:normal;font-size:11.5px;font-weight:700;letter-spacing:.19em;text-transform:uppercase;color:var(--lime);line-height:1.5}
-.eyebrow.violet,p.eyebrow.violet{color:#C6A6FF}
-.lede{font-size:clamp(17px,1.9vw,20.5px);color:var(--text-2);line-height:1.6;max-width:44em}
-.small{font-size:14px;color:var(--muted);line-height:1.55;max-width:78ch}
-.grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.display{font-family:var(--serif);font-style:italic;font-weight:400;line-height:1.12;text-wrap:balance;letter-spacing:-.008em}
+h1.display{font-size:clamp(40px,6vw,68px)}
+h2.display{font-size:clamp(32px,4.4vw,48px)}
+.eyebrow,p.eyebrow{font-family:var(--sans);font-style:normal;font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--lime);line-height:1.5}
+.eyebrow.violet,p.eyebrow.violet{color:#CDAEFF}
+.lede{font-size:clamp(18.5px,1.9vw,22px);color:var(--text-2);line-height:1.6;max-width:42em}
+.small{font-size:15.5px;color:var(--muted);line-height:1.6;max-width:74ch}
 
-/* ---------- buttons ---------- */
+/* ---------- buttons — 48px min target ---------- */
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:9px;
-  font-family:var(--sans);font-size:16px;font-weight:700;
-  padding:15px 30px;border-radius:999px;text-decoration:none;
+  font-family:var(--sans);font-size:17.5px;font-weight:700;
+  padding:17px 34px;min-height:56px;border-radius:999px;text-decoration:none;
   border:1px solid transparent;cursor:pointer;
   transition:transform .18s ease,box-shadow .18s ease,background-color .18s ease;
 }
-.btn-primary{background:var(--grad);color:#fff;box-shadow:0 6px 28px rgba(122,63,242,.42)}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 34px rgba(122,63,242,.55)}
+.btn-primary{background:var(--grad);color:#fff;box-shadow:0 6px 30px rgba(122,63,242,.45)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 38px rgba(122,63,242,.6)}
 .btn-ghost{background:transparent;color:var(--text);border-color:var(--line-2)}
-.btn-ghost:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.3)}
-.btn-lime{background:var(--lime);color:#16210A}
+.btn-ghost:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.36)}
+.btn-lime{background:var(--lime);color:#141E06}
 .btn-lime:hover{transform:translateY(-2px)}
-.ctarow{display:flex;flex-wrap:wrap;gap:13px;align-items:center}
+.ctarow{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.textlink{
+  display:inline-block;font-size:17px;font-weight:600;color:var(--lime);
+  text-decoration:none;border-bottom:1px solid rgba(201,246,90,.45);padding:6px 0 3px;
+}
+.textlink:hover{border-bottom-color:var(--lime)}
 
 /* ---------- header ---------- */
-header{position:sticky;top:0;z-index:60;backdrop-filter:blur(14px);background:rgba(13,8,23,.78);border-bottom:1px solid var(--line)}
-.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+header{position:sticky;top:0;z-index:60;backdrop-filter:blur(14px);background:rgba(13,8,23,.82);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:76px}
 /* The Reveri logo — the real asset, not a rebuild.
-   Drop the existing reversed/light wordmark at assets/logo.svg.
-   If it is missing, the alt text shows so the gap is obvious. */
-.logo{display:inline-flex;align-items:center;text-decoration:none;color:var(--text);font-size:19px;font-weight:600;letter-spacing:.01em}
-.logo img{height:26px;width:auto}
-footer .logo img{height:30px}
-.logo-fallback{font-size:21px;font-weight:600;letter-spacing:.02em}
-.navlinks{display:flex;gap:30px;align-items:center}
-.navlinks a{font-size:14.5px;color:var(--text-2);text-decoration:none;font-weight:500}
+   Drop the existing reversed/light wordmark at assets/logo.svg. */
+.logo{display:inline-flex;align-items:center;text-decoration:none;color:var(--text)}
+.logo img{height:28px;width:auto}
+footer .logo img{height:32px}
+.logo-fallback{font-size:23px;font-weight:600;letter-spacing:.02em}
+.navlinks{display:flex;gap:34px;align-items:center}
+.navlinks a{font-size:16.5px;color:var(--text-2);text-decoration:none;font-weight:500}
 .navlinks a:hover{color:var(--text)}
-.nav .btn{padding:11px 22px;font-size:14.5px}
-@media(max-width:860px){.navlinks{display:none}}
+.nav .btn{padding:12px 26px;font-size:16px;min-height:48px}
+@media(max-width:900px){.navlinks{display:none}}
 
 /* ---------- orb motif ---------- */
-.orb{border-radius:50%;background:radial-gradient(circle at 32% 28%,#F0A6D0 0%,#B455E6 34%,#7A3FF2 62%,#3E2A75 100%);filter:blur(.3px)}
-.glow{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;pointer-events:none;z-index:0}
+.orb{border-radius:50%;background:radial-gradient(circle at 32% 28%,#F0A6D0 0%,#B455E6 34%,#7A3FF2 62%,#3E2A75 100%)}
+.glow{position:absolute;border-radius:50%;filter:blur(95px);opacity:.5;pointer-events:none;z-index:0}
 
 /* ---------- hero ---------- */
-.hero{position:relative;overflow:hidden;padding:78px 0 80px}
-.hero .g1{width:560px;height:560px;background:#5B2D8E;top:-190px;left:-170px}
-.hero .g2{width:460px;height:460px;background:#B33A87;top:120px;right:-190px;opacity:.36}
-.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.06fr .94fr;gap:56px;align-items:center}
-.hero h1{margin:16px 0 20px}
-.hero .lede{max-width:37em}
+.hero{position:relative;overflow:hidden;padding:76px 0 66px}
+.hero .g1{width:580px;height:580px;background:#5B2D8E;top:-200px;left:-180px}
+.hero .g2{width:470px;height:470px;background:#B33A87;top:110px;right:-200px;opacity:.34}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.08fr .92fr;gap:58px;align-items:center}
+.hero h1{margin:18px 0 22px}
 .hero .recog{
-  font-family:var(--serif);font-style:italic;font-size:19px;color:#D9CDEF;
-  border-left:2px solid var(--violet);padding-left:16px;margin:24px 0 30px;
+  font-family:var(--serif);font-style:italic;font-size:20px;color:#DED3F2;
+  border-left:3px solid var(--violet);padding-left:18px;margin:26px 0 30px;
 }
-.trustline{display:flex;flex-wrap:wrap;gap:9px 20px;align-items:center;margin-top:26px;font-size:14px;color:var(--muted)}
-.stars{color:var(--lime);letter-spacing:.09em;font-size:14px}
-.trustline .sep{opacity:.35}
-@media(max-width:940px){.hero-grid{grid-template-columns:1fr;gap:44px}.hero{padding:52px 0 62px}}
+.trustline{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;margin-top:26px;font-size:16px;color:var(--text-2)}
+.stars{color:var(--lime);letter-spacing:.09em}
+.trustline .sep{opacity:.3}
+@media(max-width:620px){.trustline{gap:8px 0;flex-direction:column;align-items:flex-start}.trustline .sep{display:none}}
+@media(max-width:980px){.hero-grid{grid-template-columns:1fr;gap:46px}.hero{padding:52px 0 56px}}
 
-/* ---------- phone mockups (app's own light palette) ---------- */
+/* ---------- phone mockups ---------- */
 .phone{
-  width:294px;background:var(--app-page);border-radius:34px;
+  width:300px;background:var(--app-page);border-radius:34px;
   border:1px solid rgba(255,255,255,.14);
-  box-shadow:0 30px 70px rgba(0,0,0,.55),0 0 0 9px #1A1330;
-  padding:15px 15px 17px;display:flex;flex-direction:column;
-  min-height:534px;color:var(--app-ink);
+  box-shadow:0 30px 70px rgba(0,0,0,.58),0 0 0 9px #1A1330;
+  padding:16px 16px 18px;display:flex;flex-direction:column;
+  min-height:540px;color:var(--app-ink);
   font-size:14px;line-height:1.5;
 }
-.phone .status{display:flex;justify-content:space-between;font-size:10.5px;font-weight:700;color:var(--app-ink);margin-bottom:11px;letter-spacing:.02em}
-.phone .apphead{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}
-.phone .plogo{font-family:var(--serif);font-style:italic;font-size:16px;color:var(--app-purple)}
-.phone .porb{width:22px;height:22px}
-.phone .pey{font-size:9.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--app-accent);margin-bottom:6px}
-.phone .pdisplay{font-family:var(--serif);font-style:italic;font-size:22px;line-height:1.2;margin-bottom:12px;color:var(--app-ink)}
-.phone .psub{font-size:11.5px;color:var(--app-gray);margin-bottom:12px}
-.phone .orb.big{width:78px;height:78px;margin:6px auto 16px}
-.card-app{background:var(--app-card);border:1px solid var(--app-line);border-radius:14px;padding:12px 13px;margin-bottom:9px}
-.card-app .when{font-size:9.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--app-accent);margin-bottom:3px}
-.card-app .title{font-size:15px;font-weight:800;line-height:1.3}
-.card-app .sml{font-size:10.5px;color:var(--app-gray);margin-top:4px;line-height:1.45}
-.said{background:var(--app-lav);border-radius:12px;padding:11px 13px;margin-bottom:9px}
-.said .lab{font-size:9.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--app-purplemid);margin-bottom:4px}
-.said .txt{font-family:var(--serif);font-style:italic;font-size:13px;line-height:1.42;color:var(--app-purple)}
-.pbtn{background:var(--app-purple);color:#fff;border-radius:999px;text-align:center;padding:11px;font-size:14px;font-weight:700}
-.pghost{text-align:center;color:var(--app-purplemid);font-weight:600;font-size:11.5px;padding-top:9px}
-.askrow{background:var(--app-card);border:1px solid var(--app-line);border-radius:14px;padding:11px 13px;margin-bottom:9px}
-.askrow .q{font-size:12.5px;font-weight:800;margin-bottom:8px}
+.phone .status{display:flex;justify-content:space-between;font-size:11px;font-weight:700;margin-bottom:12px}
+.phone .apphead{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.phone .plogo{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--app-purple)}
+.phone .porb{width:23px;height:23px}
+.phone .pey{font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--app-accent);margin-bottom:7px}
+.phone .pdisplay{font-family:var(--serif);font-style:italic;font-size:23px;line-height:1.2;margin-bottom:13px}
+.phone .orb.big{width:80px;height:80px;margin:6px auto 17px}
+.card-app{background:var(--app-card);border:1px solid var(--app-line);border-radius:14px;padding:13px 14px;margin-bottom:10px}
+.card-app .when{font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--app-accent);margin-bottom:4px}
+.card-app .title{font-size:15.5px;font-weight:800;line-height:1.3}
+.card-app .sml{font-size:11.5px;color:var(--app-gray);margin-top:5px;line-height:1.45}
+.said{background:var(--app-lav);border-radius:12px;padding:12px 14px;margin-bottom:10px}
+.said .lab{font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--app-purplemid);margin-bottom:5px}
+.said .txt{font-family:var(--serif);font-style:italic;font-size:13.5px;line-height:1.42;color:var(--app-purple)}
+.pbtn{background:var(--app-purple);color:#fff;border-radius:999px;text-align:center;padding:12px;font-size:14.5px;font-weight:700}
+.pghost{text-align:center;color:var(--app-purplemid);font-weight:600;font-size:12px;padding-top:10px}
+.askrow{background:var(--app-card);border:1px solid var(--app-line);border-radius:14px;padding:12px 14px;margin-bottom:10px}
+.askrow .q{font-size:13px;font-weight:800;margin-bottom:9px}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{border:1px solid var(--app-line);background:#fff;border-radius:999px;padding:6px 11px;font-size:11px;font-weight:700}
+.chip{border:1px solid var(--app-line);background:#fff;border-radius:999px;padding:7px 12px;font-size:11.5px;font-weight:700}
 .chip.sel{background:var(--app-purple);color:#fff;border-color:var(--app-purple)}
-.pfoot{margin-top:auto;border-top:1px solid var(--app-line);padding-top:10px;display:flex;justify-content:space-between;align-items:baseline}
-.pfoot span{font-size:11px;font-weight:700}
+.pfoot{margin-top:auto;border-top:1px solid var(--app-line);padding-top:11px;display:flex;justify-content:space-between;align-items:baseline}
+.pfoot span{font-size:11.5px;font-weight:700}
 .pfoot .r{color:var(--app-accent)}
-.ptabs{display:flex;justify-content:space-around;padding-top:9px}
-.ptab{font-size:10.5px;font-weight:600;color:var(--app-muted)}
+.ptabs{display:flex;justify-content:space-around;padding-top:10px}
+.ptab{font-size:11px;font-weight:600;color:var(--app-muted)}
 .ptab.on{color:var(--app-purplemid)}
 .phone-stack{display:flex;justify-content:center;perspective:1400px}
 .phone-stack .phone{transform:rotateY(-9deg) rotateX(2deg)}
-@media(max-width:940px){.phone-stack .phone{transform:none}}
+@media(max-width:980px){.phone-stack .phone{transform:none}}
 
 /* ---------- sections ---------- */
-section{position:relative}
-.band{padding:92px 0}
+.band{position:relative;padding:96px 0}
 .band-alt{background:var(--ink-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.sechead{max-width:720px;margin-bottom:44px}
-.sechead h2{margin:14px 0 16px}
-@media(max-width:760px){.band{padding:64px 0}}
+.sechead{max-width:760px;margin-bottom:48px}
+.sechead h2{margin:16px 0 18px}
+@media(max-width:760px){.band{padding:66px 0}}
 
-/* recognition passage */
-.recognition p:not(.eyebrow){font-size:clamp(19px,2.2vw,24px);line-height:1.55;color:#E7E0F5;margin-bottom:22px;font-family:var(--serif);font-style:italic;text-wrap:pretty}
-.recognition p.turn{font-family:var(--sans);font-style:normal;font-size:18.5px;color:var(--text-2);line-height:1.65}
-.recognition p:last-child{margin-bottom:0}
+/* ---------- proof strip ---------- */
+.proof{background:var(--ink-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:44px 0}
+.proofgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.pf{padding:6px 22px 6px 0;border-right:1px solid var(--line)}
+.pf:last-child{border-right:0}
+.pf .num{font-family:var(--sans);font-size:38px;font-weight:700;line-height:1.05;letter-spacing:-.02em;color:var(--text);margin-bottom:8px}
+.pf .l{font-size:15.5px;color:var(--text-2);line-height:1.45}
+.pf .l a{color:var(--lime);text-decoration:none;border-bottom:1px solid rgba(201,246,90,.4)}
+@media(max-width:900px){.proofgrid{grid-template-columns:1fr 1fr;gap:26px}.pf:nth-child(2n){border-right:0}}
+@media(max-width:520px){.proofgrid{grid-template-columns:1fr}.pf{border-right:0;border-bottom:1px solid var(--line);padding-bottom:20px}.pf:last-child{border-bottom:0}}
 
-/* product showcase */
-.showcase{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;align-items:start}
+/* ---------- category contrast ---------- */
+.contrast-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:8px}
+.cc{border-radius:20px;padding:30px 30px}
+.cc.no{background:transparent;border:1px solid var(--line)}
+.cc.yes{background:var(--surface);border:1px solid var(--line-2)}
+.cc .k{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px}
+.cc.no .k{color:var(--muted)}
+.cc.yes .k{color:var(--lime)}
+.cc p{font-size:18px;line-height:1.6;color:var(--text-2)}
+.cc.yes p{color:var(--text)}
+@media(max-width:820px){.contrast-grid{grid-template-columns:1fr}}
+
+.pullquote{
+  margin-top:30px;background:var(--surface-2);border:1px solid var(--line-2);
+  border-radius:20px;padding:30px 34px;
+}
+.pullquote blockquote{font-family:var(--serif);font-style:italic;font-size:22px;line-height:1.45;color:#EFE9F9;margin-bottom:12px;text-wrap:pretty}
+.pullquote cite{font-style:normal;font-size:15.5px;color:var(--muted);font-weight:600}
+
+/* ---------- product showcase ---------- */
+.showcase{display:grid;grid-template-columns:repeat(3,1fr);gap:34px;align-items:start}
 .showcase .col{display:flex;flex-direction:column;align-items:center}
-.showcase .phone{width:100%;max-width:294px}
-.showcase .cap{margin-top:22px;text-align:center;max-width:300px}
-.showcase .cap .k{font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--lime);margin-bottom:7px}
-.showcase .cap h3{font-size:19px;font-weight:700;margin-bottom:7px;letter-spacing:-.01em}
-.showcase .cap p{font-size:14.5px;color:var(--text-2);line-height:1.55}
-@media(max-width:1000px){.showcase{grid-template-columns:1fr;gap:56px}.showcase .cap{max-width:420px}}
+.showcase .phone{width:100%;max-width:300px}
+.showcase .cap{margin-top:26px;text-align:center;max-width:320px}
+.showcase .cap .k{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--lime);margin-bottom:9px}
+.showcase .cap h3{font-size:21px;font-weight:700;margin-bottom:9px;letter-spacing:-.01em}
+.showcase .cap p{font-size:16.5px;color:var(--text-2);line-height:1.55}
+@media(max-width:1020px){.showcase{grid-template-columns:1fr;gap:60px}.showcase .cap{max-width:440px}}
 
-/* how it works — David's voice */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:12px}
-.step{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:28px 26px}
-.step .n{font-family:var(--serif);font-style:italic;font-size:34px;color:var(--violet);line-height:1;margin-bottom:14px}
-.step h3{font-size:18px;font-weight:700;margin-bottom:9px}
-.step p{font-size:15px;color:var(--text-2);line-height:1.6}
-@media(max-width:860px){.steps{grid-template-columns:1fr}}
+/* ---------- steps ---------- */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:12px}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:32px 30px}
+.step .n{font-family:var(--serif);font-style:italic;font-size:38px;color:#B98CFF;line-height:1;margin-bottom:16px}
+.step h3{font-size:20px;font-weight:700;margin-bottom:11px}
+.step p{font-size:16.5px;color:var(--text-2);line-height:1.6}
+@media(max-width:880px){.steps{grid-template-columns:1fr}}
 
-.davidquote{
-  margin-top:44px;background:var(--surface-2);border:1px solid var(--line-2);
-  border-radius:22px;padding:34px 36px;display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center;
+/* ---------- the visualisation ---------- */
+.viz{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center}
+.vizart{position:relative;min-height:330px;display:flex;align-items:center;justify-content:center}
+.vizart .ring{position:absolute;border-radius:50%;border:1px solid var(--line-2)}
+.places{display:flex;flex-wrap:wrap;gap:11px;justify-content:center;max-width:430px;position:relative;z-index:2}
+.place{
+  background:rgba(255,255,255,.07);border:1px solid var(--line-2);border-radius:999px;
+  padding:11px 18px;font-family:var(--serif);font-style:italic;font-size:17px;color:#E4DAF5;
 }
-.davidquote .portrait{
-  width:96px;height:96px;border-radius:50%;flex:none;overflow:hidden;
-  background:linear-gradient(150deg,#4A3475,#2A1E46);
-  border:1px solid var(--line-2);
-  display:flex;align-items:flex-end;justify-content:center;
-}
-.davidquote .portrait img{width:100%;height:100%;object-fit:cover}
-.davidquote blockquote{font-family:var(--serif);font-style:italic;font-size:21px;line-height:1.45;color:#EDE6F8;margin-bottom:12px;text-wrap:pretty}
-.davidquote cite{font-style:normal;font-size:14px;color:var(--muted);font-weight:600}
-@media(max-width:700px){.davidquote{grid-template-columns:1fr;text-align:left;padding:26px 24px}}
+.place.hi{background:var(--grad);border-color:transparent;color:#fff;font-style:normal;font-family:var(--sans);font-weight:600;font-size:15.5px}
+@media(max-width:900px){.viz{grid-template-columns:1fr;gap:38px}}
 
-/* audio clip */
+/* ---------- evidence ---------- */
+.findings{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:34px}
+.finding{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:30px 28px}
+.finding .num{font-family:var(--sans);font-size:40px;font-weight:700;line-height:1.05;letter-spacing:-.02em;margin-bottom:12px}
+.finding p{font-size:16.5px;color:var(--text-2);line-height:1.55}
+@media(max-width:880px){.findings{grid-template-columns:1fr}}
+
+.studies{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.study{border:1px solid var(--line);border-radius:20px;padding:28px 30px}
+.study .j{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#CDAEFF;margin-bottom:10px}
+.study h4{font-size:19px;font-weight:700;line-height:1.4;margin-bottom:11px}
+.study p{font-size:16px;color:var(--text-2);margin-bottom:16px;line-height:1.55}
+@media(max-width:880px){.studies{grid-template-columns:1fr}}
+
+.caveat{margin-top:26px;border-left:3px solid var(--line-2);padding-left:20px}
+.caveat p{font-size:16px;color:var(--muted);line-height:1.6;max-width:70ch}
+
+/* ---------- hypno test ---------- */
+.hook{
+  background:var(--grad);border-radius:28px;padding:56px 50px;
+  display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center;
+}
+.hook h2{color:#fff;margin-bottom:16px}
+.hook p{color:rgba(255,255,255,.94);font-size:19px;line-height:1.6;margin-bottom:26px;max-width:32em}
+.hook .free{display:inline-block;background:rgba(0,0,0,.26);color:#fff;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:9px 17px;border-radius:999px;margin-bottom:20px}
+.archetypes{display:flex;flex-direction:column;gap:12px}
+.arch{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.26);border-radius:14px;padding:15px 19px;color:#fff}
+.arch .nm{font-family:var(--serif);font-style:italic;font-size:20px}
+.arch .ds{font-size:14px;color:rgba(255,255,255,.86);margin-top:3px}
+@media(max-width:880px){.hook{grid-template-columns:1fr;padding:40px 28px}}
+
+/* ---------- members ---------- */
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:34px}
+.t{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:28px;display:flex;flex-direction:column}
+.t .before{font-size:13.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.t blockquote{font-family:var(--serif);font-style:italic;font-size:19px;line-height:1.5;color:#EFE9F9;margin-bottom:18px;flex:1;text-wrap:pretty}
+.t .who{font-size:15px;font-weight:700;color:var(--text-2)}
+.t .src{font-size:14px;color:var(--muted);margin-top:3px}
+@media(max-width:980px){.tgrid{grid-template-columns:1fr}}
+
+.vgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.vquote{border:1px solid var(--line);border-radius:20px;padding:26px 28px}
+
+.vquote blockquote{font-size:17px;line-height:1.6;color:var(--text-2);margin-bottom:14px}
+.vquote .who{font-size:15.5px;font-weight:700}
+.vquote .role{font-size:14.5px;color:var(--muted)}
+@media(max-width:800px){.vgrid{grid-template-columns:1fr}}
+
+/* ---------- David ---------- */
+.davidgrid{display:grid;grid-template-columns:.85fr 1.15fr;gap:52px;align-items:center}
+.portrait{
+  width:100%;max-width:340px;aspect-ratio:1;border-radius:24px;overflow:hidden;
+  background:linear-gradient(150deg,#4A3475,#241A3F);border:1px solid var(--line-2);
+}
+.portrait img{width:100%;height:100%;object-fit:cover}
+.davidgrid blockquote{font-family:var(--serif);font-style:italic;font-size:clamp(22px,2.4vw,28px);line-height:1.4;color:#EFE9F9;margin-bottom:18px;text-wrap:pretty}
+.davidgrid cite{font-style:normal;font-size:16px;color:var(--muted);font-weight:600;display:block;margin-bottom:26px}
+.live{background:var(--surface);border:1px solid var(--line-2);border-radius:20px;padding:26px 28px}
+.live .k{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--lime);margin-bottom:10px}
+.live h3{font-size:21px;font-weight:700;margin-bottom:9px}
+.live p{font-size:16.5px;color:var(--text-2);line-height:1.6}
+@media(max-width:880px){.davidgrid{grid-template-columns:1fr;gap:34px}.portrait{max-width:260px}}
+
+/* ---------- clip ---------- */
 .clip{
   margin-top:34px;background:var(--surface);border:1px solid var(--line);
-  border-radius:20px;padding:22px 24px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;
+  border-radius:20px;padding:24px 26px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;
 }
-.clip .orb{width:52px;height:52px;flex:none}
-.clip .meta{flex:1;min-width:200px}
-.clip .meta .k{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--lime);margin-bottom:5px}
-.clip .meta p{font-size:15px;color:var(--text-2)}
-.clip audio{width:100%;max-width:320px;height:38px}
+.clip .orb{width:56px;height:56px;flex:none}
+.clip .meta{flex:1;min-width:220px}
+.clip .meta .k{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--lime);margin-bottom:6px}
+.clip .meta p{font-size:16.5px;color:var(--text-2)}
+.clip audio{width:100%;max-width:340px;height:42px}
 
-/* evidence — KPI row of stat tiles */
-.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:34px}
-.kpi{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:28px 26px}
-.kpi .label{font-size:14.5px;color:var(--text-2);line-height:1.5;margin-bottom:14px;min-height:3em}
-.kpi .value{font-family:var(--sans);font-size:52px;font-weight:700;line-height:1;letter-spacing:-.025em;color:var(--text)}
-.kpi .method{font-size:12.5px;color:var(--muted);margin-top:12px;padding-top:12px;border-top:1px solid var(--line);line-height:1.5}
-@media(max-width:860px){.kpis{grid-template-columns:1fr}.kpi .label{min-height:0}}
+/* ---------- boundaries ---------- */
+.bounds{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.bound{border:1px solid var(--line);border-radius:20px;padding:30px 28px}
+.bound h3{font-size:18.5px;font-weight:700;margin-bottom:12px}
+.bound p{font-size:16.5px;color:var(--text-2);line-height:1.6}
+@media(max-width:880px){.bounds{grid-template-columns:1fr}}
 
-.studies{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.study{background:transparent;border:1px solid var(--line);border-radius:18px;padding:24px 26px}
-.study .j{font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#C6A6FF;margin-bottom:9px}
-.study h4{font-size:17px;font-weight:700;line-height:1.4;margin-bottom:9px}
-.study p{font-size:14.5px;color:var(--text-2);margin-bottom:14px;line-height:1.55}
-.study a{font-size:14px;color:var(--lime);text-decoration:none;font-weight:600;border-bottom:1px solid rgba(201,246,90,.4);padding-bottom:1px}
-.study a:hover{border-bottom-color:var(--lime)}
-@media(max-width:860px){.studies{grid-template-columns:1fr}}
-
-/* testimonials */
-.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.t{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:26px 26px 24px;display:flex;flex-direction:column}
-.t .before{font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid var(--line)}
-.t blockquote{font-family:var(--serif);font-style:italic;font-size:17.5px;line-height:1.5;color:#EDE6F8;margin-bottom:16px;flex:1;text-wrap:pretty}
-.t .who{font-size:13px;font-weight:700;color:var(--text-2);letter-spacing:.04em}
-.t .src{font-size:12px;color:var(--muted);margin-top:3px}
-@media(max-width:940px){.tgrid{grid-template-columns:1fr}}
-
-/* validators */
-.vgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-.v{border:1px solid var(--line);border-radius:18px;padding:22px 24px}
-.v blockquote{font-size:15.5px;line-height:1.6;color:var(--text-2);margin-bottom:12px}
-.v .who{font-size:13.5px;font-weight:700}
-.v .role{font-size:12.5px;color:var(--muted)}
-@media(max-width:760px){.vgrid{grid-template-columns:1fr}}
-
-/* hypnotizability hook */
-.hook{
-  background:var(--grad);border-radius:26px;padding:52px 46px;
-  display:grid;grid-template-columns:1.25fr .75fr;gap:36px;align-items:center;position:relative;overflow:hidden;
-}
-.hook h2{color:#fff;margin-bottom:14px}
-.hook p{color:rgba(255,255,255,.9);font-size:17.5px;line-height:1.6;margin-bottom:24px;max-width:34em}
-.hook .free{display:inline-block;background:rgba(0,0,0,.24);color:#fff;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:7px 14px;border-radius:999px;margin-bottom:18px}
-.archetypes{display:flex;flex-direction:column;gap:11px}
-.arch{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.24);border-radius:14px;padding:13px 17px;color:#fff}
-.arch .nm{font-family:var(--serif);font-style:italic;font-size:18px}
-.arch .ds{font-size:12.5px;color:rgba(255,255,255,.82);margin-top:2px}
-@media(max-width:860px){.hook{grid-template-columns:1fr;padding:38px 26px}}
-
-/* boundaries */
-.bounds{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.bound{border:1px solid var(--line);border-radius:18px;padding:26px 24px}
-.bound h3{font-size:16.5px;font-weight:700;margin-bottom:10px;color:var(--text)}
-.bound p{font-size:14.5px;color:var(--text-2);line-height:1.6}
-@media(max-width:860px){.bounds{grid-template-columns:1fr}}
-
-/* final CTA */
-.finale{text-align:center;padding:104px 0 96px;position:relative;overflow:hidden}
-.finale .g{width:640px;height:640px;background:#7A3FF2;top:-160px;left:50%;transform:translateX(-50%);opacity:.3}
+/* ---------- finale ---------- */
+.finale{text-align:center;padding:108px 0 96px;position:relative;overflow:hidden}
+.finale .g{width:660px;height:660px;background:#7A3FF2;top:-170px;left:50%;transform:translateX(-50%);opacity:.3}
 .finale .inner{position:relative;z-index:1}
-.finale h2{margin:16px auto 18px;max-width:15em}
-.finale .lede{max-width:36em;margin:0 auto 32px}
+.finale h2{margin:18px auto 20px;max-width:14em}
+.finale .lede{max-width:34em;margin:0 auto 34px}
 .finale .ctarow{justify-content:center}
-.badges{display:flex;gap:14px;justify-content:center;margin-top:30px;flex-wrap:wrap}
-.badge-store{
-  display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line-2);border-radius:12px;
-  padding:10px 18px;text-decoration:none;color:var(--text);background:rgba(255,255,255,.04);
-}
-.badge-store:hover{background:rgba(255,255,255,.09)}
-.badge-store .t1{font-size:10px;color:var(--muted);line-height:1.2;display:block}
-.badge-store .t2{font-size:15px;font-weight:700;line-height:1.2}
+.storeline{margin-top:30px;font-size:15.5px;color:var(--muted)}
+.storeline a{color:var(--text-2);text-decoration:none;border-bottom:1px solid var(--line-2)}
+.storeline a:hover{color:var(--text)}
 
-/* footer */
-footer{border-top:1px solid var(--line);padding:56px 0 44px;background:var(--ink-2)}
-.fgrid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:36px;margin-bottom:40px}
-.fgrid h4{font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:15px}
-.fgrid a{display:block;font-size:14.5px;color:var(--text-2);text-decoration:none;margin-bottom:10px}
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);padding:60px 0 48px;background:var(--ink-2)}
+.fgrid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:38px;margin-bottom:42px}
+.fgrid h4{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.fgrid a{display:block;font-size:16.5px;color:var(--text-2);text-decoration:none;margin-bottom:12px}
 .fgrid a:hover{color:var(--text)}
-.fgrid a.logo{display:inline-flex;align-items:center;color:var(--text);margin-bottom:14px}
-.fbot{border-top:1px solid var(--line);padding-top:24px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
-.fbot p{font-size:13px;color:var(--muted);max-width:58em;line-height:1.6}
-@media(max-width:860px){.fgrid{grid-template-columns:1fr 1fr;gap:28px}}
+.fgrid a.logo{display:inline-flex;align-items:center;color:var(--text);margin-bottom:16px}
+.fbot{border-top:1px solid var(--line);padding-top:26px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.fbot p{font-size:15px;color:var(--muted);max-width:56em;line-height:1.6}
+@media(max-width:880px){.fgrid{grid-template-columns:1fr 1fr;gap:30px}}
 
 .skip{position:absolute;left:-9999px;top:0}
-.skip:focus{left:16px;top:12px;z-index:200;background:var(--lime);color:#16210A;padding:11px 18px;border-radius:8px;font-weight:700;text-decoration:none}
+.skip:focus{left:16px;top:12px;z-index:200;background:var(--lime);color:#141E06;padding:13px 20px;border-radius:8px;font-weight:700;text-decoration:none}
 </style>
 </head>
 <body>
@@ -358,7 +396,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 44px;background:var(--ink
       <a href="/pricing/">Pricing</a>
       <a href="/app/">Get the app</a>
     </nav>
-    <a class="btn btn-primary" href="https://app.reveri.com" data-cta="nav">Start free trial</a>
+    <a class="btn btn-primary" href="https://app.reveri.com" data-cta="nav">Try a session free</a>
   </div>
 </header>
 
@@ -366,9 +404,15 @@ footer{border-top:1px solid var(--line);padding:56px 0 44px;background:var(--ink
 
 <!-- ============================ HERO ============================
      Primary Frame (framework §5), post-cutover. Profile-level lead
-     copy = Mode C, outcome-led: no mechanism word in the hero.
-     Structured short-form — recognition is carried by the closing
-     line rather than the headline (framework §1).
+     copy = Mode C, outcome-led.
+
+     Reweighted from pain to stress this pass. Pain-led creative on
+     cold audiences is one of only two genuinely disproven items in
+     four years, and the homepage is a cold surface. Stress carries
+     the volume, the largest measured relief, and the npj paper.
+
+     Subhead now states HOW the product behaves differently, not
+     just what it is for — that was the main gap versus The Path.
      ============================================================== -->
 <section class="hero">
   <div class="glow g1" aria-hidden="true"></div>
@@ -377,22 +421,24 @@ footer{border-top:1px solid var(--line);padding:56px 0 44px;background:var(--ink
     <div>
       <p class="eyebrow">From Stanford's Dr. David Spiegel</p>
       <h1 class="display">A personal session with Dr.&nbsp;Spiegel — anytime.</h1>
-      <p class="lede">Your mind can change how your body feels. Whether that's chronic pain, sleepless nights, or stress that won't let go — Stanford's Dr.&nbsp;David Spiegel guides you through it, in about ten minutes, on your phone.</p>
+      <p class="lede">Interactive sessions for stress, sleeplessness and pain that respond to what you say and start where your last one ended. About ten minutes, whenever you need one.</p>
       <p class="recog">When nothing else has worked.</p>
       <div class="ctarow">
-        <a class="btn btn-primary" href="https://app.reveri.com" data-cta="hero-primary">Start your free 7-day trial</a>
-        <a class="btn btn-ghost" href="#test" data-cta="hero-test">Test your hypnotizability — free</a>
+        <a class="btn btn-primary" href="https://app.reveri.com" data-cta="hero-primary">Try your first session free</a>
       </div>
+      <p style="margin-top:18px">
+        <a class="textlink" href="#test" data-cta="hero-test">Or take Dr. Spiegel's 5-minute hypnotizability test — no signup</a>
+      </p>
       <div class="trustline">
         <span><span class="stars" aria-hidden="true">★★★★★</span> 4.5 from 4,400+ App&nbsp;Store ratings</span>
         <span class="sep">·</span>
-        <span>No drugs. No side effects.</span>
+        <span>Natural — nothing to take, no side effects</span>
       </div>
     </div>
 
-    <!-- Phone 1: Today, with the memory line -->
+    <!-- Phone 1: Today, stress, with the memory line -->
     <div class="phone-stack">
-      <div class="phone" role="img" aria-label="Reveri app, Today screen: good morning, Marcel. One session — getting ahead of your back pain, about ten minutes with David. Last time this took you from 7 to 3.">
+      <div class="phone" role="img" aria-label="Reveri app, Today screen: good morning, Marcel. One session — taking the edge off today, about ten minutes with David. Last time this took you from 7 to 3.">
         <div class="status"><span>7:12</span><span>▮▮▮ ⌁</span></div>
         <div class="apphead"><span class="plogo">reveri</span><div class="orb porb"></div></div>
         <div class="pey">Wednesday morning</div>
@@ -400,7 +446,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 44px;background:var(--ink
         <div class="orb big"></div>
         <div class="card-app">
           <div class="when">Ready when you are</div>
-          <div class="title">Getting ahead of your back pain</div>
+          <div class="title">Taking the edge off today</div>
           <div class="sml">About ten minutes with David. Last time this took you from 7 to 3.</div>
         </div>
         <div class="pbtn">Begin</div>
@@ -412,47 +458,97 @@ footer{border-top:1px solid var(--line);padding:56px 0 44px;background:var(--ink
   </div>
 </section>
 
-<!-- ====================== RECOGNITION PASSAGE ======================
-     Framework §1, long-form order: recognition → mechanism/authority
-     → promise. Entry Point 01, The Exhausted Seeker.
-     ================================================================ -->
-<section class="band band-alt">
-  <div class="wrap narrow recognition">
-    <p class="eyebrow violet" style="margin-bottom:22px">If you've been at this a while</p>
-    <p>You have a folder in your head of things that were supposed to work. The physical therapy. The second opinion. The prescription you didn't love taking. The meditation app you opened four times.</p>
-    <p>None of it was unreasonable. It just didn't hold.</p>
-    <p class="turn">What almost none of it addressed is the part of the system that decides how much of the signal you feel. That part is real, it is measurable, and it has been studied for fifty years by the doctor who built this — Stanford's Dr.&nbsp;David Spiegel, who has spent his career on a single question: how the mind changes what the body feels.</p>
-    <p class="turn">Reveri is his session. Not his method, licensed and read aloud by someone else — him, guiding you, ten minutes at a time. Most people feel a meaningful shift in their first one.</p>
+<!-- ========================= PROOF STRIP =========================
+     Immediately below the hero, per the review. Every figure here
+     is publicly citable — the npj paper is open literature and the
+     rating is on the store listing. No internal-only numbers.
+     ============================================================== -->
+<section class="proof" aria-label="Evidence at a glance">
+  <div class="wrap proofgrid">
+    <div class="pf">
+      <div class="num">84,395</div>
+      <div class="l">members in a <a href="https://www.nature.com/articles/s41746-025-02182-0" rel="noopener" target="_blank">peer-reviewed study</a> of Reveri sessions</div>
+    </div>
+    <div class="pf">
+      <div class="num">282,893</div>
+      <div class="l">sessions analysed in that study</div>
+    </div>
+    <div class="pf">
+      <div class="num">4.5★</div>
+      <div class="l">from 4,400+ App Store ratings</div>
+    </div>
+    <div class="pf">
+      <div class="num">50 years</div>
+      <div class="l">of Dr. David Spiegel's research at Stanford University</div>
+    </div>
   </div>
 </section>
 
-<!-- ========================= THE PRODUCT =========================
-     "Show the product, don't describe it." Live HTML/CSS mockups in
-     the app's own palette. Post-cutover claims: a session with David
-     every time, and he remembers.
+<!-- ====================== CATEGORY CONTRAST ======================
+     Moved into the second screenful. This is the single clearest
+     differentiator and it is now backed by our own peer-reviewed
+     finding that interactive sessions outperform non-interactive.
      ============================================================== -->
 <section class="band">
   <div class="wrap">
     <div class="sechead">
+      <p class="eyebrow">What this is</p>
+      <h2 class="display">Not another library of hypnosis recordings.</h2>
+      <p class="lede">Dr. Spiegel asks. You answer. The session changes based on what you say.</p>
+    </div>
+
+    <div class="contrast-grid">
+      <div class="cc no">
+        <div class="k">A recording</div>
+        <p>Plays the same way for everyone. Doesn't know what brought you, how bad today is, or what helped last week. You browse a list and hope you picked right.</p>
+      </div>
+      <div class="cc yes">
+        <div class="k">A session with David</div>
+        <p>Starts by asking what's going on. Adapts as you answer. Opens next time with what you told him worked — so you're never starting from scratch, and never hunting through a menu.</p>
+      </div>
+    </div>
+
+    <div class="pullquote">
+      <blockquote>“I like how quick and simple this app is. The interactive mode is almost like the doctor is in the room with you.”</blockquote>
+      <cite>Tatyana · App Store review</cite>
+    </div>
+
+    <p class="small" style="margin-top:26px">In the published analysis of 282,893 sessions, interactive sessions produced significantly greater relief than non-interactive ones. It isn't a stylistic preference — it's the part that does the work.</p>
+  </div>
+</section>
+
+<!-- ========================= THE PRODUCT =========================
+     Show, don't describe. Live HTML/CSS mockups in the app's own
+     palette, copy taken from the Plan artifact's copy deck.
+
+     NOTE on memory wording: "he remembers" and "builds on your last"
+     are gone. Two reasons — they implied David personally knows the
+     member, and our own npj paper found no longitudinal improvement
+     across sessions. Memory makes each session more personal, not
+     more effective. The copy now says exactly that.
+     ============================================================== -->
+<section class="band band-alt">
+  <div class="wrap">
+    <div class="sechead">
       <p class="eyebrow">The app</p>
-      <h2 class="display">One session. Chosen for you. And he remembers.</h2>
-      <p class="lede">No library to browse, no course to complete, no score to keep up. You open Reveri and there is one thing waiting, picked from your goal, your moment, and what your last session actually did for you.</p>
+      <h2 class="display">One session, chosen for you. It starts where the last one ended.</h2>
+      <p class="lede">No library to browse, no course to complete, no score to keep up. You open Reveri and there is one thing waiting, picked from what you came for, when you practise, and what you told him worked.</p>
     </div>
 
     <div class="showcase">
       <div class="col">
-        <div class="phone" role="img" aria-label="Reveri session close screen: notice how much lighter that feels. Did that help? A lot, some, or not yet. A note from David: from a 7 to a 3, the second time in a row the ice-pack approach has done that for you.">
+        <div class="phone" role="img" aria-label="Reveri session close screen: notice how much quieter that is. Did that help? A lot, some, or not yet. A note from David: from a 7 to a 3 — the same approach that worked for you on Monday.">
           <div class="status"><span>7:24</span><span>▮▮▮ ⌁</span></div>
           <div class="apphead"><span class="plogo">reveri</span><div class="orb porb"></div></div>
           <div class="pey">Session complete</div>
-          <div class="pdisplay">Notice how much lighter that feels.</div>
+          <div class="pdisplay">Notice how much quieter that is.</div>
           <div class="askrow">
             <div class="q">Did that help?</div>
             <div class="chips"><span class="chip sel">A lot</span><span class="chip">Some</span><span class="chip">Not yet</span></div>
           </div>
           <div class="said">
             <div class="lab">A note from David</div>
-            <div class="txt">From a 7 to a 3 — the second time in a row the ice-pack approach has done that for you. Your body is learning the way down.</div>
+            <div class="txt">From a 7 to a 3 — the same approach that worked for you on Monday. Let's stay with it.</div>
           </div>
           <div class="card-app">
             <div class="when">Same time tomorrow?</div>
@@ -463,20 +559,20 @@ footer{border-top:1px solid var(--line);padding:56px 0 44px;background:var(--ink
           <div class="ptabs"><span class="ptab on">Today</span><span class="ptab">You</span></div>
         </div>
         <div class="cap">
-          <div class="k">He remembers</div>
-          <h3>Every session builds on your last</h3>
-          <p>What helped, and how far it took you. David picks up from there — using what you told him, never a guess.</p>
+          <div class="k">It responds to you</div>
+          <h3>You say what changed</h3>
+          <p>One tap at the end. That answer is what he opens with next time — using what you told him, never a guess.</p>
         </div>
       </div>
 
       <div class="col">
-        <div class="phone" role="img" aria-label="Reveri relief screen: what's happening right now? Pain, stress, a craving, can't sleep, or something else. Ready now — stop it escalating, four minutes.">
+        <div class="phone" role="img" aria-label="Reveri relief screen: what's happening right now? Stress, pain, a craving, can't sleep, or something else. Ready now — stop it escalating, four minutes.">
           <div class="status"><span>4:46</span><span>▮▮▮ ⌁</span></div>
           <div class="apphead"><span class="plogo">reveri</span><div class="orb porb"></div></div>
           <div class="pey">Act before it builds</div>
           <div class="pdisplay">What's happening right now?</div>
-          <div class="chips" style="margin-bottom:13px">
-            <span class="chip sel">Pain</span><span class="chip">Stress</span><span class="chip">A craving</span><span class="chip">Can't sleep</span><span class="chip">Something else</span>
+          <div class="chips" style="margin-bottom:14px">
+            <span class="chip sel">Stress</span><span class="chip">Pain</span><span class="chip">A craving</span><span class="chip">Can't sleep</span><span class="chip">Something else</span>
           </div>
           <div class="card-app">
             <div class="when">Ready now</div>
@@ -489,7 +585,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 44px;background:var(--ink
           <div class="ptabs"><span class="ptab on">Today</span><span class="ptab">You</span></div>
         </div>
         <div class="cap">
-          <div class="k">Relief, always</div>
+          <div class="k">It's there when you need it</div>
           <h3>One tap when something flares</h3>
           <p>From any screen, at any hour. Four minutes to take the edge off, without disturbing your regular practice.</p>
         </div>
@@ -528,49 +624,30 @@ footer{border-top:1px solid var(--line);padding:56px 0 44px;background:var(--ink
   </div>
 </section>
 
-<!-- ===================== HOW A SESSION WORKS =====================
-     In David's register: precise, warm, authoritative (framework §5).
-     Effortless pillar — interactive, not passive.
-     ============================================================== -->
-<section class="band band-alt">
+<!-- ===================== HOW A SESSION WORKS ===================== -->
+<section class="band">
   <div class="wrap">
     <div class="sechead">
       <p class="eyebrow">How a session works</p>
-      <h2 class="display">Ten quiet minutes. He does the rest.</h2>
-      <p class="lede">Sessions are a conversation, not a recording. David asks, you answer, and where it goes next depends on what you said.</p>
+      <h2 class="display">Dr. Spiegel asks. You answer. Your mind does the rest.</h2>
+      <p class="lede">Ten quiet minutes, somewhere you won't be interrupted. Everything else is guided.</p>
     </div>
 
     <div class="steps">
       <div class="step">
         <div class="n" aria-hidden="true">1</div>
         <h3>He asks what's going on</h3>
-        <p>Where it hurts, how bad it is right now, what you've already tried today. A number from one to ten is enough to start.</p>
+        <p>What's weighing on you, how bad it is right now, what you've already tried today. A number from one to ten is enough to start.</p>
       </div>
       <div class="step">
         <div class="n" aria-hidden="true">2</div>
         <h3>He guides you down</h3>
-        <p>Eyes closed, somewhere you won't be interrupted. He talks you into a state of highly focused concentration and puts it to work on the thing you named.</p>
+        <p>Eyes closed. He talks you into a state of highly focused concentration and puts it to work on the thing you named.</p>
       </div>
       <div class="step">
         <div class="n" aria-hidden="true">3</div>
-        <h3>You say what changed</h3>
-        <p>One tap at the end. That answer is what he opens with next time — which is how the sessions stop being separate and start compounding.</p>
-      </div>
-    </div>
-
-    <div class="davidquote">
-      <div class="portrait">
-        <!-- TODO: drop David's portrait at assets/david-spiegel.jpg (see README).
-             Rights are ours — pull from the current Squarespace site, or use a
-             still from the intro-video shoot when it lands. -->
-        <img src="/assets/david-spiegel.jpg" alt="Dr. David Spiegel" onerror="this.style.display='none'">
-      </div>
-      <div>
-        <blockquote>“I've spent fifty years at Stanford University on one question: how the mind changes what the body feels. This is that work, in your pocket, whenever you need it.”</blockquote>
-        <cite>Dr. David Spiegel — Stanford University, co-founder of Reveri, and the voice of every session</cite>
-        <!-- COPY FLAG: quotation is constructed from approved credential language,
-             not a sourced verbatim quote. Requires David's sign-off before launch
-             (framework §5 voice protocol), or swap for a real line from the intro video. -->
+        <h3>You come back and say what changed</h3>
+        <p>One tap. That's what he opens with next time — which is how the sessions stop being separate and start feeling like yours.</p>
       </div>
     </div>
 
@@ -578,11 +655,11 @@ footer{border-top:1px solid var(--line);padding:56px 0 44px;background:var(--ink
       <div class="orb" aria-hidden="true"></div>
       <div class="meta">
         <div class="k">Hear a session</div>
-        <p>Twenty seconds of David, from the beginning of a pain session.</p>
+        <p>Twenty seconds of David, from the beginning of a stress session.</p>
       </div>
       <!-- TODO: replace assets/session-clip.mp3 with the approved 20–30s clip.
-           Longest-lead asset — needs David's approval. Until it lands, this
-           player renders with a silent placeholder file. -->
+           Needs David's approval — batch this with the portrait and intro-video
+           asks so he's approached once, not three times. -->
       <audio controls preload="none" src="/assets/session-clip.mp3">
         Your browser doesn't support audio playback.
       </audio>
@@ -590,78 +667,128 @@ footer{border-top:1px solid var(--line);padding:56px 0 44px;background:var(--ink
   </div>
 </section>
 
+<!-- ==================== THE FLOATING PLACE ======================
+     New this pass. Internally described as "the stickiest moment in
+     the session and the clearest differentiator", and almost
+     entirely unused in marketing until now. Concrete, ownable, and
+     nothing a company with synthetic therapists can imitate.
+
+     VERIFY BEFORE LAUNCH: the 7,500 figure comes from internal
+     product data. Confirm Ariel is happy publishing it, and refresh
+     the number at launch.
+     ============================================================= -->
+<section class="band band-alt">
+  <div class="wrap viz">
+    <div>
+      <p class="eyebrow">The part people remember</p>
+      <h2 class="display" style="margin:16px 0 18px">Everyone has a place they go.</h2>
+      <p class="lede">Partway into a session, David asks you to imagine yourself floating — somewhere safe, somewhere yours. Almost nobody picks the same place twice.</p>
+      <p class="lede" style="margin-top:16px">Members have described more than 7,500 of them. A lake in Michigan. The back of a boat. A hammock at a grandmother's house. Nearly two in three involve water, and no two are written the same way.</p>
+      <p class="small" style="margin-top:20px">It's the moment members bring up unprompted more than any other — and the clearest sign that the session is theirs rather than something played at them.</p>
+    </div>
+    <div class="vizart" aria-hidden="true">
+      <div class="places">
+        <span class="place">the lake at dusk</span>
+        <span class="place hi">62% water</span>
+        <span class="place">my grandmother's porch</span>
+        <span class="place">a raft, no shore</span>
+        <span class="place">the Adriatic</span>
+        <span class="place hi">7,500+ places</span>
+        <span class="place">a hammock in the pines</span>
+        <span class="place">the back of the boat</span>
+        <span class="place">warm sand, no one else</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ========================== EVIDENCE ==========================
-     KPI row of stat tiles (three headline numbers are not a chart).
-     Every stat carries method + n, or a visible TODO where it doesn't.
+     Rewritten around the npj Digital Medicine paper. The old
+     77/84/90 tiles are gone — they were unsourced, and these
+     figures are peer-reviewed, published, and stronger.
+
+     "The science of hypnosis is settled" retired: unnecessarily
+     sweeping when the actual evidence is this good.
      ============================================================= -->
 <section class="band">
   <div class="wrap">
     <div class="sechead">
       <p class="eyebrow">The evidence</p>
-      <h2 class="display">Checkable, not adjectival.</h2>
-      <p class="lede">The science of hypnosis is settled — it has been for decades. Here is what our own members report, and the peer-reviewed research the method rests on.</p>
+      <h2 class="display">Studied for decades. Now validated at digital scale.</h2>
+      <p class="lede">In December 2025, an analysis of 282,893 Reveri stress sessions across 84,395 members was published in <i>npj Digital Medicine</i>. Here is what it found, including the parts that complicate the story.</p>
     </div>
 
-    <!-- =========================================================
-         ⚠️ DO NOT LAUNCH THESE THREE NUMBERS AS WRITTEN.
-         Source, n, and method must be filled into the .method line
-         under each tile. Unexplained, they read as marketing
-         numbers — which is exactly the failure mode this page
-         exists to avoid. See COPY-NOTES.md § Open verifications.
-         The real pre→post chart (BigQuery: average pre/post
-         intensity, share of change in first five minutes) drops in
-         below this row — see the placeholder comment after .kpis.
-         ========================================================= -->
-    <div class="kpis">
-      <div class="kpi">
-        <div class="label">felt less pain after one ten-minute session</div>
-        <div class="value">77%</div>
-        <div class="method">TODO — source, sample size, and how it was measured. Currently unattributed.</div>
+    <div class="findings">
+      <div class="finding">
+        <div class="num">−1.5</div>
+        <p>Average drop in self-rated stress within a single session, on a ten-point scale — consistent across members' first ten sessions.</p>
       </div>
-      <div class="kpi">
-        <div class="label">felt less stress after a single session</div>
-        <div class="value">84%</div>
-        <div class="method">TODO — source, sample size, and how it was measured. Currently unattributed.</div>
+      <div class="finding">
+        <div class="num">0.75</div>
+        <p>Effect size (Cohen's <i>d</i>) for that within-session reduction. In behavioural research, that is a large effect.</p>
       </div>
-      <div class="kpi">
-        <div class="label">felt more rested after their first sleep session</div>
-        <div class="value">90%</div>
-        <div class="method">TODO — source, sample size, and how it was measured. Currently unattributed.</div>
+      <div class="finding">
+        <div class="num">Interactive</div>
+        <p>Sessions where members answered questions produced significantly greater relief than ones they only listened to.</p>
       </div>
     </div>
-
-    <!-- PLACEHOLDER: pre→post intensity chart.
-         Generate from BigQuery via the querying-reveri skill:
-         average pre/post reported intensity, and share of total
-         change occurring in the first five minutes. Render as an
-         inline SVG dumbbell (one hue, two shades), n and method
-         labelled on the figure itself. Deliberately omitted rather
-         than mocked — a fabricated evidence chart on the evidence
-         section is the worst possible thing to ship. -->
 
     <div class="studies">
       <div class="study">
-        <div class="j">Cerebral Cortex · 2017</div>
-        <h4>Brain Activity and Functional Connectivity Associated with Hypnosis</h4>
-        <p>Brain-imaging research from Stanford University, co-authored by Dr. David Spiegel, identifying the specific changes in brain activity and connectivity that occur during hypnosis. Jiang, White, Greicius, Waelde &amp; Spiegel.</p>
-        <a href="https://pubmed.ncbi.nlm.nih.gov/27469596/" rel="noopener" target="_blank">Read the paper on PubMed →</a>
+        <div class="j">npj Digital Medicine · 2025</div>
+        <h4>Effects of app-delivered self-hypnosis on stress management</h4>
+        <p>The study above. Tran, Saperia, Neri, Jo, Kim, Zewde, Nouriani, Kinderman, Jagielo, Faerman, Maldonado &amp; Spiegel.</p>
+        <a class="textlink" href="https://www.nature.com/articles/s41746-025-02182-0" rel="noopener" target="_blank">Read the paper →</a>
       </div>
       <div class="study">
         <div class="j">The Lancet · 2000</div>
         <h4>Adjunctive non-pharmacological analgesia for invasive medical procedures: a randomised trial</h4>
         <p>A randomised trial in which self-hypnosis reduced pain and drug use during invasive procedures. Lang, Benotsch, Fick, Lutgendorf, Berbaum, Berbaum, Logan &amp; Spiegel.</p>
-        <a href="https://pubmed.ncbi.nlm.nih.gov/10801169/" rel="noopener" target="_blank">Read the trial on PubMed →</a>
+        <a class="textlink" href="https://pubmed.ncbi.nlm.nih.gov/10801169/" rel="noopener" target="_blank">Read the trial →</a>
       </div>
     </div>
-    <p class="small" style="margin-top:22px">Hypnotic responsiveness varies from person to person — some people go deep quickly, others need more sessions. That's why the test below is free and comes before you pay for anything. <a href="/science/" style="color:var(--lime);text-decoration:none;font-weight:600">The full picture, including how sessions handle moments of real distress →</a></p>
+
+    <div class="caveat">
+      <p><strong style="color:var(--text-2)">What it doesn't show.</strong> The 2025 analysis is observational — it looked at what happened in real sessions, without a control group, so it can't prove the sessions caused the change on their own. It also found that relief was consistent session to session rather than compounding over time. We'd rather tell you that than let you find it. <a class="textlink" style="font-size:16px" href="/science/">The full picture, including how sessions handle moments of real distress →</a></p>
+    </div>
   </div>
 </section>
 
-<!-- ======================== TESTIMONIALS ========================
-     Before → after where the member's own words supply the before.
-     No invented before-states.
+<!-- ==================== HYPNOTIZABILITY TEST ====================
+     Promoted, not demoted. "Are you hypnotizable?" is our lowest-CPA
+     creative angle, the test predicts conversion, and test-taker to
+     signup conversion has never been measured. The homepage is the
+     cheapest place to finally answer that.
+
+     CTA names David deliberately: "Take Dr. Spiegel's test" beat
+     "Personalize your plan" by 40% in the quiz onboarding test.
      ============================================================= -->
-<section class="band band-alt">
+<section class="band band-alt" id="test">
+  <div class="wrap">
+    <div class="hook">
+      <div>
+        <span class="free">Free · five minutes · no signup</span>
+        <h2 class="display">How hypnotizable are you?</h2>
+        <p>It varies from person to person, it's measurable, and it predicts how much this will do for you — the published analysis found members who score higher get more out of a session. Dr. Spiegel's own five-minute assessment scores you and tells you which of three styles you fall into. Take it before you decide anything.</p>
+        <a class="btn btn-lime" href="https://app.reveri.com/hypno-test" data-cta="hypno-test">Take Dr. Spiegel's test — free</a>
+      </div>
+      <div class="archetypes">
+        <div class="arch"><div class="nm">The Researcher</div><div class="ds">Analytical, evidence-first</div></div>
+        <div class="arch"><div class="nm">The Diplomat</div><div class="ds">Balanced, adaptable</div></div>
+        <div class="arch"><div class="nm">The Poet</div><div class="ds">Immersive, imaginative</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= MEMBERS & VALIDATORS =================
+     TODO — TESTIMONIAL BREADTH. The current site's review set is
+     pain-weighted, and this page now leads with stress. Two of the
+     three cards below should be replaced with a stress story and a
+     sleep story before launch, keeping the before→after structure.
+     Do not write a before-line the member's own words don't support.
+     ============================================================= -->
+<section class="band">
   <div class="wrap">
     <div class="sechead">
       <p class="eyebrow">Members</p>
@@ -669,9 +796,9 @@ footer{border-top:1px solid var(--line);padding:56px 0 44px;background:var(--ink
     </div>
     <div class="tgrid">
       <div class="t">
-        <div class="before">Severe chronic pain</div>
-        <blockquote>“I have suffered from severe chronic pain and I was shocked it WORKED after just ONE session. Thank you, Dr. Spiegel!”</blockquote>
-        <div class="who">LAS</div>
+        <div class="before">Six months in</div>
+        <blockquote>“Been using it for 6 months and I really see its positive impact on my everyday life. 100% suggested.”</blockquote>
+        <div class="who">Gros Andrea</div>
         <div class="src">App Store review</div>
       </div>
       <div class="t">
@@ -687,75 +814,65 @@ footer{border-top:1px solid var(--line);padding:56px 0 44px;background:var(--ink
         <div class="src">App Store review</div>
       </div>
     </div>
-    <!-- TODO: replace with the deduplicated before→after testimonial library
-         once it exists (framework §1 — the before state is the conversion
-         engine). These three are the strongest of the current site's set:
-         each one supplies its own before state in the member's own words.
-         Do not add before-lines the quote itself doesn't support. -->
-  </div>
-</section>
 
-<!-- ========================= VALIDATORS =========================
-     Kept, but below the product story — never above it.
-     ============================================================= -->
-<section class="band">
-  <div class="wrap">
-    <div class="sechead" style="margin-bottom:32px">
-      <p class="eyebrow">Also convinced</p>
-      <h2 class="display">People who looked into it properly.</h2>
-    </div>
     <div class="vgrid">
-      <div class="v">
+      <div class="vquote">
         <blockquote>“I strongly encourage you to check the Reveri app. There are hypnosis sessions to managing chronic pain, enhancing sleep, focus and more.”</blockquote>
         <div class="who">Andrew Huberman</div>
         <div class="role">Neuroscientist, host of Huberman Lab</div>
       </div>
-      <div class="v">
+      <div class="vquote">
         <blockquote>“It's remarkable. It actually feels really good. My pain dropped to nearly zero. It's surprising — Reveri is incredibly valuable.”</blockquote>
         <div class="who">Tim Ferriss</div>
         <div class="role">Author, host of The Tim Ferriss Show</div>
       </div>
-      <div class="v">
-        <blockquote>“The work Reveri is doing is super important. It's amazing to see how self-hypnosis can help people transform their experience — with no side effects.”</blockquote>
-        <div class="who">Rich Roll</div>
-        <div class="role">Ultra-endurance athlete and podcaster</div>
-      </div>
-      <div class="v">
+      <div class="vquote">
         <blockquote>“Reveri gives you a safe place to practice being a calmer, more grounded version of yourself. It's effortless, powerful, and helps separate the trigger from the response.”</blockquote>
         <div class="who">Mayim Bialik</div>
         <div class="role">Neuroscientist and actress</div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== HYPNOTIZABILITY TEST ====================
-     Top-tier hook. Free, pre-paywall, try-before-you-buy.
-     ============================================================= -->
-<section class="band" id="test" style="padding-top:24px">
-  <div class="wrap">
-    <div class="hook">
-      <div>
-        <span class="free">Free · five minutes · no signup</span>
-        <h2 class="display">How hypnotizable are you?</h2>
-        <p>Roughly two thirds of adults can use this — and how easily is measurable. Dr. Spiegel's own clinical assessment takes five minutes, scores you, and tells you which of three brain styles you fall into. Take it before you decide anything.</p>
-        <!-- COPY FLAG: "roughly two thirds of adults" — verify against a
-             citable source before launch, or cut to "most adults". -->
-        <a class="btn btn-lime" href="https://app.reveri.com/hypno-test" data-cta="hypno-test">Take the test — free</a>
-      </div>
-      <div class="archetypes">
-        <div class="arch"><div class="nm">The Researcher</div><div class="ds">Analytical, evidence-first</div></div>
-        <div class="arch"><div class="nm">The Diplomat</div><div class="ds">Balanced, adaptable</div></div>
-        <div class="arch"><div class="nm">The Poet</div><div class="ds">Immersive, imaginative</div></div>
+      <div class="vquote">
+        <blockquote>“The work Reveri is doing is super important. It's amazing to see how self-hypnosis can help people transform their experience — with no side effects.”</blockquote>
+        <div class="who">Rich Roll</div>
+        <div class="role">Ultra-endurance athlete and podcaster</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ========================= BOUNDARIES =========================
-     Stated proudly and plainly, not buried in legal (brief).
+<!-- ============================ DAVID ===========================
+     Depth treatment immediately before the ask, so the last thing
+     read is the person — not other celebrities.
+
+     Live monthly sessions included: a real doctor, live, is
+     something a competitor built on synthetic personalities
+     structurally cannot match.
      ============================================================= -->
 <section class="band band-alt">
+  <div class="wrap davidgrid">
+    <div class="portrait">
+      <!-- TODO: assets/david-spiegel.jpg — see assets/README.md -->
+      <img src="/assets/david-spiegel.jpg" alt="Dr. David Spiegel" onerror="this.style.display='none'">
+    </div>
+    <div>
+      <p class="eyebrow">The doctor</p>
+      <blockquote style="margin-top:16px">“I've spent fifty years at Stanford University on one question: how the mind changes what the body feels. This is that work, in your pocket, whenever you need it.”</blockquote>
+      <!-- COPY FLAG: constructed from approved credential language, not a
+           sourced verbatim quote. Needs David's sign-off, or swap for a
+           real line from the intro video. -->
+      <cite>Dr. David Spiegel — Stanford University, co-founder of Reveri, and the voice of every session</cite>
+
+      <div class="live">
+        <div class="k">Live with David</div>
+        <h3>Once a month, in the room with him</h3>
+        <p>Thirty minutes, live — a guided session and questions answered, submitted in advance. Every member is invited and everyone gets the recording. He is a real doctor, and he shows up.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= BOUNDARIES ========================= -->
+<section class="band">
   <div class="wrap">
     <div class="sechead">
       <p class="eyebrow">Straight answers</p>
@@ -764,39 +881,40 @@ footer{border-top:1px solid var(--line);padding:56px 0 44px;background:var(--ink
     <div class="bounds">
       <div class="bound">
         <h3>It works alongside your care, not instead of it</h3>
-        <p>Reveri is a wellness product. It is not a substitute for medical care, and nothing here is a reason to change or stop anything your doctor has prescribed. Keep your doctor in the loop.</p>
+        <p>Reveri is a wellness product. It is not a substitute for medical care, and nothing here is a reason to change or stop anything your doctor has prescribed.</p>
       </div>
       <div class="bound">
         <h3>It doesn't work identically for everyone</h3>
-        <p>Hypnotic responsiveness genuinely varies. Most people feel something meaningful in the first session; some need a few. The free test tells you where you're likely to land before you pay.</p>
+        <p>Hypnotic responsiveness genuinely varies, and our own published analysis found it predicts how much relief people get. The free test tells you where you're likely to land before you pay.</p>
       </div>
       <div class="bound">
-        <h3>If a session meets real distress, it stops and helps</h3>
-        <p>Sessions are built to recognise when someone is in crisis and to respond with real resources rather than carrying on. We explain exactly how on the Science &amp; Safety page.</p>
+        <h3>It isn't crisis support</h3>
+        <p>If you are in crisis or thinking about harming yourself, please contact your local emergency services or a crisis line. Reveri is not built for that moment, and we would rather say so plainly.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ========================= FINAL CTA ========================== -->
+<!-- ========================= FINAL CTA ==========================
+     Experience-led, not subscription-led. Store badges demoted to a
+     text line: web checkout converts trials at 45.7% versus 36.4%
+     and is worth roughly double per user, so nothing on this page
+     should compete with it visually.
+     ============================================================= -->
 <section class="finale">
   <div class="glow g" aria-hidden="true"></div>
   <div class="wrap inner">
-    <p class="eyebrow">Seven days, free</p>
-    <h2 class="display">Ten quiet minutes is the whole ask.</h2>
-    <p class="lede">Start tonight. You'll know whether it works long before the trial is up.</p>
+    <p class="eyebrow">Ten quiet minutes</p>
+    <h2 class="display">You'll know if it works before the day is out.</h2>
+    <p class="lede">Your first session is free. Start it tonight, somewhere you won't be interrupted.</p>
     <div class="ctarow">
-      <a class="btn btn-primary" href="https://app.reveri.com" data-cta="finale-primary">Start your free 7-day trial</a>
+      <a class="btn btn-primary" href="https://app.reveri.com" data-cta="finale-primary">Try your first session free</a>
       <a class="btn btn-ghost" href="/pricing/" data-cta="finale-pricing">See pricing</a>
     </div>
-    <div class="badges">
-      <a class="badge-store" href="https://apps.apple.com/us/app/reveri-relief-in-minutes/id1547020650" rel="noopener" target="_blank">
-        <span><span class="t1">Download on the</span><span class="t2">App Store</span></span>
-      </a>
-      <a class="badge-store" href="https://play.google.com/store/apps/details?id=com.reveri.reverihealth" rel="noopener" target="_blank">
-        <span><span class="t1">Get it on</span><span class="t2">Google Play</span></span>
-      </a>
-    </div>
+    <p class="storeline">Free for 7 days, then choose a plan. Also on
+      <a href="https://apps.apple.com/us/app/reveri-relief-in-minutes/id1547020650" rel="noopener" target="_blank">the App Store</a> and
+      <a href="https://play.google.com/store/apps/details?id=com.reveri.reverihealth" rel="noopener" target="_blank">Google Play</a>.
+    </p>
   </div>
 </section>
 
@@ -807,7 +925,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 44px;background:var(--ink
     <div class="fgrid">
       <div>
         <a class="logo" href="/" aria-label="Reveri — home"><img src="/assets/logo.svg" alt="Reveri"></a>
-        <p class="small" style="max-width:26em">Relief from chronic pain, stress, and sleeplessness — guided by Stanford's Dr. David Spiegel.</p>
+        <p class="small" style="max-width:26em">Interactive sessions for stress, sleeplessness and pain — guided by Stanford's Dr. David Spiegel.</p>
       </div>
       <div>
         <h4>Product</h4>
@@ -819,7 +937,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 44px;background:var(--ink
         <h4>Evidence</h4>
         <a href="/science/">Science &amp; Safety</a>
         <a href="/science/#studies">Research</a>
-        <a href="/science/#safety">How we handle distress</a>
+        <a href="/science/#safety">Our boundaries</a>
       </div>
       <div>
         <h4>Company</h4>
@@ -854,7 +972,8 @@ footer{border-top:1px solid var(--line);padding:56px 0 44px;background:var(--ink
   })();
 </script>
 
-<!-- JSON-LD: Organization + MobileApplication -->
+<!-- JSON-LD. No price: several price arms run simultaneously by design,
+     and a stale figure here surfaces in search results. -->
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -866,7 +985,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 44px;background:var(--ink
       "url":"https://reveri.com/",
       "logo":"https://reveri.com/assets/logo.png",
       "founder":{"@type":"Person","name":"David Spiegel, MD","affiliation":{"@type":"Organization","name":"Stanford University School of Medicine"}},
-      "description":"Guided self-hypnosis sessions with Stanford's Dr. David Spiegel for relief from chronic pain, stress, and sleeplessness."
+      "description":"Interactive guided self-hypnosis sessions with Stanford's Dr. David Spiegel for relief from stress, sleeplessness and pain."
     },
     {
       "@type":"MobileApplication",
@@ -875,8 +994,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 44px;background:var(--ink
       "applicationCategory":"HealthApplication",
       "url":"https://reveri.com/",
       "publisher":{"@id":"https://reveri.com/#org"},
-      "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.5","ratingCount":"4400"},
-      "offers":{"@type":"Offer","price":"99.99","priceCurrency":"USD","description":"Annual subscription following a free 7-day trial"}
+      "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.5","ratingCount":"4400"}
     }
   ]
 }
