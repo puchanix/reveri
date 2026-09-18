@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Reveri — A personal session with Dr. Spiegel, anytime</title>
-<meta name="description" content="Interactive self-hypnosis sessions guided by Stanford's Dr. David Spiegel. He asks what's going on, guides you, and remembers what worked. Relief from pain, stress and sleeplessness in about fifteen minutes. Try your first session free.">
+<title>Reveri — A session with Dr. Spiegel: his voice, his method, anytime</title>
+<meta name="description" content="Interactive self-hypnosis, guided by AI in Stanford Dr. David Spiegel's voice and built on his method. It asks what's going on, guides you, and remembers what worked. Relief from pain, stress and sleeplessness in about fifteen minutes. First session free.">
 <link rel="canonical" href="https://www.reveri.com/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Reveri — A personal session with Dr. Spiegel, anytime">
-<meta property="og:description" content="He asks what's going on. He guides you. He remembers what worked. Relief from pain, stress and sleeplessness — guided by Stanford's Dr. David Spiegel.">
+<meta property="og:title" content="Reveri — A session with Dr. Spiegel: his voice, his method, anytime">
+<meta property="og:description" content="Interactive self-hypnosis guided by AI in Dr. David Spiegel's voice. It asks what's going on, guides you, and remembers what worked. Relief from pain, stress and sleeplessness.">
 <meta property="og:url" content="https://www.reveri.com/">
 <meta property="og:image" content="https://www.reveri.com/assets/david-og.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -23,6 +23,7 @@
  {"@type":"Organization","name":"Reveri","url":"https://www.reveri.com/","logo":"https://www.reveri.com/assets/reveri-wordmark.svg","founder":{"@type":"Person","name":"David Spiegel","jobTitle":"Professor, Stanford University"}},
  {"@type":"MobileApplication","name":"Reveri: Relief in Minutes","operatingSystem":"iOS, Android","applicationCategory":"HealthApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD","description":"7-day free trial"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.5","ratingCount":"4400"}},
  {"@type":"FAQPage","mainEntity":[
+  {"@type":"Question","name":"Is it really Dr. Spiegel?","acceptedAnswer":{"@type":"Answer","text":"Sessions are guided by an AI built on Dr. David Spiegel's method and speaking in his voice. He designed and trained it, but he is not present live and does not hear your sessions."}},
   {"@type":"Question","name":"Is Reveri a replacement for medical care?","acceptedAnswer":{"@type":"Answer","text":"No. Reveri is a wellness product that works alongside your care. Nothing in it is a reason to change or stop anything your doctor has prescribed."}},
   {"@type":"Question","name":"Does it work for everyone?","acceptedAnswer":{"@type":"Answer","text":"Hypnotic responsiveness varies from person to person. Your first session begins by finding out how you respond, and Dr. Spiegel tunes every session to it."}},
   {"@type":"Question","name":"Is Reveri crisis support?","acceptedAnswer":{"@type":"Answer","text":"No. If you are in crisis, contact your local emergency services or a crisis line."}}
@@ -46,7 +47,7 @@ a{color:var(--purplemid)}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
 .eyebrow{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--purplemid)}
 h1,h2,h3,.display{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--purple);text-wrap:balance;letter-spacing:-.01em}
-h1{font-size:clamp(38px,6vw,64px);line-height:1.04;margin:14px 0 20px}
+h1{font-size:clamp(36px,5.4vw,58px);line-height:1.06;margin:14px 0 20px;text-wrap:pretty}
 h2{font-size:clamp(30px,4.2vw,44px);line-height:1.1;margin:12px 0 16px}
 h3{font-size:22px;line-height:1.2;font-style:normal;font-family:var(--sans);font-weight:700;color:var(--ink)}
 p{margin-bottom:14px}
@@ -209,7 +210,7 @@ header .btn{padding:11px 18px;font-size:15px;box-shadow:none}
 .doctor .cred{color:#BFB2E4;font-size:15px}
 
 /* answers */
-.answers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:26px}
+.answers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:26px}
 
 /* final */
 .final{text-align:center;padding:96px 0}
@@ -271,9 +272,9 @@ footer .legal{border-top:1px solid var(--line);padding-top:18px;max-width:70em}
 <section class="hero">
   <div class="wrap">
     <div>
-      <div class="eyebrow">From Stanford's Dr. David Spiegel</div>
-      <h1>A personal session with Dr.&nbsp;Spiegel — anytime.</h1>
-      <p class="lead">He asks what's going on. He guides you. He remembers what worked — so the next session picks up where the last one left off. Fifteen minutes, whenever you need it.</p>
+      <div class="eyebrow">Interactive self-hypnosis · guided by AI in Dr. Spiegel's voice</div>
+      <h1>A session with Dr.&nbsp;Spiegel — his voice, his method, anytime.</h1>
+      <p class="lead">Fifty years of Stanford practice, delivered by an AI he trained, in his voice. It asks what's going on, guides you, and remembers what worked — so the next session picks up where the last one left off. Fifteen minutes, whenever you need it.</p>
       <p class="pull">When nothing else has worked.</p>
       <div class="cta-row">
         <a class="btn" href="https://app.reveri.com/survey/onboarding?utm_source=website&utm_medium=hero" data-track="cta_hero">Start your first session free</a>
@@ -503,6 +504,7 @@ footer .legal{border-top:1px solid var(--line);padding-top:18px;max-width:70em}
     <div class="eyebrow">Straight answers</div>
     <h2>What Reveri is, and what it isn't.</h2>
     <div class="answers">
+      <div class="card"><h3>It isn't Dr. Spiegel live</h3><p>Every session is guided by an AI built on Dr. Spiegel's method and speaking in his voice. He designed it, trained it and reviews how it works — but he isn't on the line, and he doesn't hear your sessions. What "remembers you" is the software, kept private to your account.</p></div>
       <div class="card"><h3>It works alongside your care, not instead of it</h3><p>Reveri is a wellness product. It is not a substitute for medical care, and nothing here is a reason to change or stop anything your doctor has prescribed.</p></div>
       <div class="card"><h3>It doesn't work identically for everyone</h3><p>How people respond to hypnosis genuinely varies. That's why your first session begins by finding out how <em>you</em> respond — and why every session after is tuned to it.</p></div>
       <div class="card"><h3>It isn't crisis support</h3><p>If you are in crisis or thinking about harming yourself, please contact your local emergency services or a crisis line. Reveri is not built for that moment, and we would rather say so plainly.</p></div>
