@@ -1,50 +1,99 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
-  "trailingSlash": true,
-
+  "trailingSlash": false,
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), interest-cohort=()" },
-        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        }
       ]
     },
     {
       "source": "/assets/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     }
   ],
-
   "redirects": [
-    { "source": "/membership", "destination": "/pricing/", "permanent": true },
-
-    { "source": "/research", "destination": "/science/", "permanent": true },
-    { "source": "/brain-activity-during-hypnosis", "destination": "/science/", "permanent": true },
-    { "source": "/safety-of-hypnosis", "destination": "/science/#safety", "permanent": true },
-    { "source": "/hypnosis-vs-placebo", "destination": "/science/", "permanent": true },
-    { "source": "/genes", "destination": "/science/", "permanent": true },
-
-    { "source": "/download", "destination": "/app/", "permanent": true },
-    { "source": "/contact", "destination": "/support/", "permanent": true },
-    { "source": "/frequently-asked-questions", "destination": "/pricing/#faq", "permanent": true },
-    { "source": "/terms-of-service", "destination": "/terms/", "permanent": true },
-    { "source": "/privacy-policy", "destination": "/privacy/", "permanent": true },
-
-    { "source": "/hypnotizability", "destination": "https://app.reveri.com/hypno-test", "permanent": true },
-    { "source": "/hypnotizability-test", "destination": "https://app.reveri.com/hypno-test", "permanent": true },
-
-    { "source": "/hypnosis-stress-anxiety", "destination": "/", "permanent": false },
-    { "source": "/hypnosis-good-sleep-insomnia", "destination": "/", "permanent": false },
-    { "source": "/hypnosis-quit-smoking", "destination": "/", "permanent": false },
-    { "source": "/quit-vaping", "destination": "/", "permanent": false },
-    { "source": "/hypnosis-focus-performance", "destination": "/", "permanent": false },
-    { "source": "/hypnosis-intuitive-eating", "destination": "/", "permanent": false }
+    {
+      "source": "/pricing",
+      "destination": "https://www.reveri.com/pricing",
+      "permanent": false
+    },
+    {
+      "source": "/science",
+      "destination": "https://www.reveri.com/science",
+      "permanent": false
+    },
+    {
+      "source": "/app",
+      "destination": "https://www.reveri.com/app",
+      "permanent": false
+    },
+    {
+      "source": "/about",
+      "destination": "https://www.reveri.com/about",
+      "permanent": false
+    },
+    {
+      "source": "/media",
+      "destination": "https://www.reveri.com/media",
+      "permanent": false
+    },
+    {
+      "source": "/press",
+      "destination": "https://www.reveri.com/press",
+      "permanent": false
+    },
+    {
+      "source": "/careers",
+      "destination": "https://www.reveri.com/careers",
+      "permanent": false
+    },
+    {
+      "source": "/faq",
+      "destination": "https://www.reveri.com/faq",
+      "permanent": false
+    },
+    {
+      "source": "/terms",
+      "destination": "https://www.reveri.com/terms",
+      "permanent": false
+    },
+    {
+      "source": "/privacy",
+      "destination": "https://www.reveri.com/privacy",
+      "permanent": false
+    },
+    {
+      "source": "/knowledge",
+      "destination": "https://www.reveri.com/knowledge",
+      "permanent": false
+    },
+    {
+      "source": "/knowledge/:slug*",
+      "destination": "https://www.reveri.com/knowledge/:slug*",
+      "permanent": false
+    }
   ]
 }

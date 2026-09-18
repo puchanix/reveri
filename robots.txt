@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://reveri.com/sitemap.xml
+Sitemap: https://www.reveri.com/sitemap.xml
