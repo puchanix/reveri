@@ -1,0 +1,98 @@
+---
+path: /pricing
+title: Reveri pricing — first session free, then one simple membership
+description: Try Reveri free. Then choose yearly or monthly membership with unlimited sessions with Dr. Spiegel's AI. Prices shown in USD; your local price appears at checkout.
+priority: 0.8
+---
+<style>
+.pagehero{padding:72px 0 30px}
+.plans{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;max-width:760px;margin-top:26px}
+.plan{background:var(--card);border:1.5px solid var(--line);border-radius:var(--r);padding:26px;display:flex;flex-direction:column;gap:8px}
+.plan.best{border-color:var(--lav70);background:var(--lav10)}
+.plan .k{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--lav70)}
+.plan .price{font-weight:600;font-size:38px;letter-spacing:-.02em;line-height:1;color:var(--ink);font-variant-numeric:tabular-nums;margin:6px 0 2px}
+.plan .price .unit{font-size:16px;font-weight:400;color:var(--ink3);letter-spacing:0}
+.plan .price .cur{font-size:26px;font-weight:500}
+.plan .sub{font-size:15px;color:var(--ink2);margin:0}
+.plan .save{display:inline-block;background:var(--lav70);color:#fff;border-radius:999px;padding:3px 10px;font-size:12px;font-weight:600;letter-spacing:.04em;margin-left:8px;vertical-align:middle}
+.plan .btn{margin-top:14px}
+.incl{max-width:760px;margin-top:26px}
+.incl ul{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px 22px}
+.incl li{padding-left:22px;position:relative;color:var(--ink2);font-size:16px}
+.incl li::before{content:"✓";position:absolute;left:0;color:var(--lav70);font-weight:600}
+.compare{max-width:760px}
+.faq{margin:18px 0 0;max-width:72ch}
+.faq details{border-top:1px solid var(--line);padding:16px 0}
+.faq details:last-child{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;font-weight:600;font-size:18px;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::after{content:"+";color:var(--lav70);font-weight:400;font-size:22px;line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq p{margin:12px 0 0;color:var(--ink2)}
+@media (max-width:640px){.plans,.incl ul{grid-template-columns:1fr}}
+</style>
+<section class="pagehero">
+  <div class="wrap">
+    <div class="eyebrow">Pricing</div>
+    <h1>Your first session is free. Then one <em>simple</em> membership.</h1>
+    <p class="lead">Unlimited sessions with Dr. Spiegel's AI, on your phone, whenever you need them. Cancel any time.</p>
+    <div class="plans" id="plans" data-currency="USD">
+      <div class="plan best">
+        <span class="k">Yearly <span class="save">Save 58%</span></span>
+        <div class="price"><span class="cur">$</span><span data-p="yearly_mo">8.33</span><span class="unit">/mo</span></div>
+        <p class="sub">Billed <span class="cur">$</span><span data-p="yearly">99.99</span> a year after your free trial.</p>
+        <a class="btn" href="https://app.reveri.com/survey/onboarding?utm_source=website&utm_medium=pricing&utm_content=yearly" data-track="cta_pricing_yearly">Start your free trial</a>
+      </div>
+      <div class="plan">
+        <span class="k">Monthly</span>
+        <div class="price"><span class="cur">$</span><span data-p="monthly">24.99</span><span class="unit">/mo</span></div>
+        <p class="sub">Billed monthly after your free trial. Cancel any time.</p>
+        <a class="btn" href="https://app.reveri.com/survey/onboarding?utm_source=website&utm_medium=pricing&utm_content=monthly" data-track="cta_pricing_monthly">Start your free trial</a>
+      </div>
+    </div>
+    <p class="small" style="margin-top:14px" id="pricenote">Prices shown in USD. Your local price and currency appear at checkout and in the app store; prices in the EU include VAT.</p>
+  </div>
+</section>
+<section class="band">
+  <div class="wrap">
+    <div class="eyebrow">What's included</div>
+    <h2>Everything. There is only one Reveri.</h2>
+    <div class="incl"><ul>
+      <li>Unlimited sessions, about ten minutes each</li>
+      <li>Dr. Spiegel's AI: asks, guides, remembers</li>
+      <li>Pain, sleep, stress, habits, focus, mood and more</li>
+      <li>The Hypnotic Induction Profile test, and what it means for you</li>
+      <li>"Where we are": his running notes on you, and your outcomes</li>
+      <li>One-tap relief when something flares</li>
+      <li>iPhone and Android, one membership</li>
+      <li>Cancel any time, no questions asked</li>
+    </ul></div>
+  </div>
+</section>
+<section>
+  <div class="wrap compare">
+    <div class="eyebrow">For perspective</div>
+    <h2>A year of Reveri costs less than one in-person session.</h2>
+    <p class="lead">Clinical hypnosis with a licensed practitioner typically runs $150–$300 a visit, if you can find one. Dr. Spiegel's method, in your pocket, whenever you need it, costs less for a year.</p>
+    <div class="faq">
+      <details><summary>Why is the first session free?</summary><p>Because most people know after one session whether this works for them, and we would rather you found out before paying. There is no card required to start on the web.</p></details>
+      <details><summary>Do prices vary by country?</summary><p>Yes. App store and web prices are set per region. What you see here is the US price in dollars; the exact price in your currency appears at checkout and in the app store before you confirm.</p></details>
+      <details><summary>How do I cancel?</summary><p>The same way you started: through the App Store, Google Play, or your account page if you subscribed online. In the app, Manage your Membership is in the More menu. Cancelling takes effect at the end of the period you've paid for.</p></details>
+      <details><summary>Is there a refund?</summary><p>Refunds are handled by the platform you paid through — Apple, Google or Stripe. Write to <a href="mailto:support@reveri.com">support@reveri.com</a> if you run into trouble.</p></details>
+      <details><summary>Can't afford it?</summary><p>Reveri for Good offers memberships to people who need Reveri and can't pay for it. <a href="/forgood">Apply here →</a></p></details>
+    </div>
+  </div>
+</section>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"MobileApplication","name":"Reveri","operatingSystem":"iOS, Android","applicationCategory":"HealthApplication","offers":[{"@type":"Offer","price":"99.99","priceCurrency":"USD","name":"Yearly membership"},{"@type":"Offer","price":"24.99","priceCurrency":"USD","name":"Monthly membership"}],"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.5","ratingCount":"4400"}}</script>
+<script>
+// Local pricing hook. When a per-country price table exists at /api/price it replaces the USD figures;
+// until then the page shows USD with the note above. Country comes from Vercel's x-vercel-ip-country header.
+(function(){
+  fetch('/api/price',{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(p){
+    if(!p||!p.currency||p.currency==='USD')return;
+    var sym=p.symbol||p.currency+' ';
+    document.querySelectorAll('#plans .cur').forEach(function(e){e.textContent=sym});
+    document.querySelectorAll('#plans [data-p]').forEach(function(e){var k=e.getAttribute('data-p');if(p[k]!=null)e.textContent=p[k]});
+    var n=document.getElementById('pricenote');if(n)n.textContent='Prices shown in '+p.currency+' for '+(p.countryName||p.country)+(p.vat?', including VAT':'')+'. The exact price appears at checkout.';
+  }).catch(function(){});
+})();
+</script>

@@ -1,0 +1,7 @@
+{
+  "name": "reveri-site",
+  "private": true,
+  "type": "module",
+  "scripts": { "build": "node build.mjs", "test:urls": "node tools/check-urls.mjs" },
+  "engines": { "node": ">=18" }
+}

@@ -1,0 +1,11 @@
+<script>
+(function(){
+  function track(name,props){try{if(window.gtag){window.gtag('event',name,props||{});}}catch(e){}}
+  window.reveriTrack=track;
+  document.querySelectorAll('[data-track]').forEach(function(a){a.addEventListener('click',function(){track('site_click',{id:a.getAttribute('data-track'),href:a.getAttribute('href')});});});
+  var mb=document.getElementById('menubtn'),mn=document.getElementById('mobilenav');
+  if(mb&&mn){mb.addEventListener('click',function(){var o=mn.classList.toggle('open');mb.setAttribute('aria-expanded',o);});}
+  var marks=[25,50,75,100],seen={};
+  window.addEventListener('scroll',function(){var h=document.documentElement,p=Math.round((h.scrollTop+window.innerHeight)/h.scrollHeight*100);marks.forEach(function(m){if(p>=m&&!seen[m]){seen[m]=1;track('scroll_depth',{percent:m});}});},{passive:true});
+})();
+</script>

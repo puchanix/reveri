@@ -1,44 +1,59 @@
 # reveri.com
 
-Static site for Reveri. No build step, no framework: plain HTML with inline CSS and a few lines of JS per page, hosted on Vercel.
+Static site for Reveri, built from plain HTML with one tiny zero-dependency build step, hosted on Vercel. Every legacy URL from the Squarespace site keeps working from day one: rebuilt pages are served from this repo, everything else is bridged to the old site at the same URL until it is migrated.
 
 ## Layout
 
 ```
-index.html          homepage
-favicon.svg
-robots.txt
-sitemap.xml         add a <url> entry for every page you migrate
-vercel.json         headers, clean URLs, temporary redirects to the old site
-assets/
-  david-intro.mp4    hero video (vertical crop, 2 MB, h264 + aac)
-  david-intro.mp3    audio-only version (unused for now)
-  david-hero.webp    hero photo (4:5), shown until the video is played
-  david-hero.jpg     jpeg fallback for the hero photo
-  david-portrait.jpg square crop used in the "The doctor" band
-  david-og.jpg       1200x630 social-share image
+build.mjs            assembles src/pages + src/partials → dist/ (Vercel runs this)
+package.json         `npm run build`, `npm run test:urls`
+vercel.json          clean URLs, headers, redirects, and the bridge rewrites
+api/bridge.js        serves not-yet-migrated URLs from the legacy Squarespace site
+api/price.js         local pricing for /pricing (country → price table; USD by default)
+src/partials/        layout.html, header.html, footer.html, analytics.html, scripts.html, condition-css.html
+src/pages/           one file per page; front matter sets path, title, description, priority
+src/css/site.css     shared styles — tokens mirror the app (Design Baseline v0.2)
+public/              copied as-is: assets (fonts, images, video), favicon, robots.txt
+tools/legacy-urls.txt  every URL from the old sitemap that is not a blog post
+tools/check-urls.mjs   acceptance test: all legacy URLs must return 200 (or redirect to a 200)
 ```
 
-The wordmark is `assets/reveri-wordmark.svg`, traced from the current site's PNG (the PNG on the Squarespace CDN is soft; the SVG is crisp at any size). If design has the original vector, drop it in under the same name. The press logos (`assets/logo-*.png`) and the three headshots (`huberman.png`, `ferriss.png`, `richroll.png`) were cut from the current site's own artwork at 2x display size.
+## Editing a page
 
-Each future page lives at `<path>/index.html` (for example `pricing/index.html`) and is served at `/pricing` because `cleanUrls` is on. Internal links use no trailing slash.
+Open `src/pages/<name>.html`. The block between the `---` lines is the page's metadata (`path`, `title`, `description`, `priority`; add `noindex: true` to keep a page out of the sitemap). Everything below it is the page body; the header, footer, analytics and scripts come from the partials. Page-specific CSS goes in a `<style>` block at the top of the body. Run `node build.mjs` to build locally; Vercel builds on every push.
+
+Adding a page: create the file with a `path:`, build, and it appears in `sitemap.xml` automatically. If it replaces a bridged legacy URL, delete that URL's rewrite from `vercel.json`.
+
+## Design
+
+Everything follows the Reveri Design Baseline v0.2 (the artifact of that name): PP Neue Montreal for everything including numbers; Bradford LL italic only for one emphasis word in a headline (`<em>` inside `h1`/`h2`) and for words attributed to David (`.david`); Lavender 80 `#43266F` for the one solid button per page; Lavender 70 `#5A2390` for links and eyebrows; cream page `#F3EEE9`, card `#FBF9F7`, white bands. Fonts are self-hosted in `public/assets/fonts` (from the app's own font files; Montreal is licensed from Pangram Pangram, Bradford from Lineto — confirm the web licence covers self-hosting).
 
 ## Deploying on Vercel
 
-1. Push this folder to a Git repository (GitHub, GitLab or Bitbucket).
-2. In Vercel: Add New → Project → import the repository. Framework preset: **Other**. Leave build command and output directory empty. Deploy.
-3. Every push to the default branch deploys production; every other branch or PR gets a preview URL.
-4. When ready to cut over: Project → Settings → Domains → add `www.reveri.com` and `reveri.com` (redirect apex to www). Vercel shows the CNAME / A records to set at the registrar. Keep the old host live until DNS has propagated.
+1. Push to a Git repository and import it in Vercel. Framework preset **Other**. Build command and output directory are read from `vercel.json` (`node build.mjs`, `dist`). Node 18+.
+2. Every push to the default branch deploys production; branches and PRs get preview URLs.
+3. Run the acceptance test against the preview: `node tools/check-urls.mjs https://<preview>.vercel.app`. It must print "All … legacy URLs OK" before cutover.
+
+### Cutover checklist
+
+1. **Squarespace → Domains: make the built-in domain (`clementine-fife-tsbc.squarespace.com`) primary.** This stops Squarespace redirecting it to www.reveri.com, which the bridge depends on. Do this right before switching DNS, not earlier.
+2. In Vercel: Settings → Domains → add `www.reveri.com` and `reveri.com` (apex redirects to www). Set the DNS records Vercel shows at the registrar.
+3. Re-run `tools/check-urls.mjs https://www.reveri.com` once DNS has propagated.
+4. Google Search Console: the property is the same (`https://www.reveri.com/`), so no change of address. Submit `https://www.reveri.com/sitemap.xml`. Watch Coverage and the `page_404` event in GA4 for a week.
+5. Keep Squarespace paid until the last bridged URL has been migrated (blog, success stories, legal, the science sub-pages, the podcast and campaign landers).
+
+## The bridge (api/bridge.js)
+
+Vercel serves static files from `dist/` first. Paths listed in `vercel.json` `rewrites` — the legacy URLs not yet rebuilt, plus `/knowledge/*`, `/success-stories/*`, `/s/*` (PDFs) and `/personalized-plan-*` — are handled by `api/bridge.js`, which fetches the same path from the Squarespace built-in domain, rewrites the domain inside the HTML so canonicals and internal links keep pointing at reveri.com, and returns it with a short CDN cache. Visitors and Google see the same URL with the same content. Remove each rewrite as its page is migrated, and delete the function when the list is empty.
+
+## Still to migrate (bridged today)
+
+Blog (`/knowledge`, 127 posts) and success stories (23) — export from Squarespace (Settings → Advanced → Import/Export, WordPress format) and convert; images need downloading from the Squarespace CDN. Legal (`/terms-of-service`, `/privacy-policy`) — bridged verbatim; Ariel has flagged both for a rewrite, which should land here as `src/pages/terms-of-service.html` and `privacy-policy.html`. Science sub-pages (`/safety-of-hypnosis`, `/brain-activity-during-hypnosis`, `/hypnotizability`, `/hypnotizability-test`, `/hypnosis-vs-placebo`, `/genes`). Podcast landers (`/huberman-lab-dr-david-spiegel`, `/tim-ferriss-…`, etc.), the thirteen `/personalized-plan-*` ad landers, `/forgood`, `/reveri-for-women`, partner protocols and the remaining condition pages (confidence, procrastination, golf, growth mindset, intrusive thoughts, be present, natural pain, focus, endometriosis, migraine).
 
 ## Before launch
 
-- **Analytics.** Paste the existing Segment or GA snippet where the `<!-- ANALYTICS -->` comment sits at the bottom of `index.html`. The page already fires `track(name, props)` for every element with a `data-track` attribute (header CTA, hero CTA, condition cards, video play, store links) and scroll-depth events at 25/50/75/100 %. It calls `window.analytics.track` if present, otherwise `window.gtag`.
-- **Redirects.** `vercel.json` currently sends `/pricing`, `/science`, `/app`, `/about`, `/press`, `/media`, `/careers`, `/faq`, `/terms`, `/privacy` and `/knowledge/*` to the same path on the current `www.reveri.com`, so the preview is fully navigable. Remove each redirect as its page is migrated into this repo. Once `www.reveri.com` points at Vercel these redirects would loop, so they must all be gone (or the pages present) before DNS cutover.
-- **Onboarding links.** All "Start" buttons go to `https://app.reveri.com/survey/onboarding` with `utm_source=website` and a `utm_medium` / `utm_content` per placement. Adjust if the web onboarding URL changes.
-- **Store links.** The App Store and Google Play links in the final CTA and footer point at the current listings; check they match the live store URLs.
-- **Press links.** In the "Featured in" row, Huberman Lab and Vogue link to the episode and the article; The New York Times, Women's Health, Men's Health and The Times have no URL yet — add an `<a>` around each `<img>` when the piece is located. The endorsement cards link to the Huberman Lab, Tim Ferriss (#731) and Rich Roll (#711) episode pages.
-- **Copy to confirm.** Response-profile wording in the phone mockups ("steady responder") and the David quote in the dark band are written to the plan and still need Dr. Spiegel's sign-off.
-
-## Editing
-
-Everything for a page is in its one HTML file. Shared design tokens are the `:root` variables at the top of the `<style>` block (page cream `#FBF9F4`, purple `#3E2A75`, accent `#6E3BE0`, deep `#221B3A`; Fraunces italic for display, Source Sans 3 for text). Copy the `<head>`, header and footer from `index.html` when starting a new page so navigation stays consistent.
+- **Pricing.** `/pricing` shows the default offering (yearly $99.99 = $8.33/mo; monthly $24.99) in USD. Regional prices go in `api/price.js` `TABLE` once confirmed from RevenueCat/Stripe; the page swaps them in by country automatically. If the live experiment changes the default offering, change the two numbers in `src/pages/pricing.html` and the JSON-LD block at the bottom of it.
+- **Copy to confirm with Dr. Spiegel.** The quote on `/what-it-helps-with` ("I treat the person"), the four pain techniques on `/hypnosis-pain-management`, and the dark-band quote on the homepage are written in his register from the plan and the board call, not verbatim from him.
+- **Careers** points at `careers@reveri.com`; confirm the inbox exists.
+- **Press links.** In the "Featured in" logo rows, Huberman Lab and Vogue link out; NYT, Women's Health, Men's Health and The Times have no article URL yet.
+- **Analytics** is GA4 `G-4W0534HQSY` in `src/partials/analytics.html`. Pages fire `site_click` for every `data-track` element, `scroll_depth` at 25/50/75/100, `video_play`/`video_complete` on the homepage, and `page_404`.

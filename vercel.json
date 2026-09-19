@@ -1,5 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "node build.mjs",
+  "outputDirectory": "dist",
   "cleanUrls": true,
   "trailingSlash": false,
   "headers": [
@@ -17,10 +19,6 @@
         {
           "key": "Referrer-Policy",
           "value": "strict-origin-when-cross-origin"
-        },
-        {
-          "key": "Permissions-Policy",
-          "value": "camera=(), microphone=(), geolocation=()"
         }
       ]
     },
@@ -36,64 +34,248 @@
   ],
   "redirects": [
     {
-      "source": "/pricing",
-      "destination": "https://www.reveri.com/pricing",
-      "permanent": false
+      "source": "/home",
+      "destination": "/",
+      "permanent": true
     },
     {
-      "source": "/science",
-      "destination": "https://www.reveri.com/science",
-      "permanent": false
+      "source": "/new-home-jul-25-1",
+      "destination": "/",
+      "permanent": true
     },
     {
-      "source": "/app",
-      "destination": "https://www.reveri.com/app",
-      "permanent": false
+      "source": "/sessions-home-test",
+      "destination": "/",
+      "permanent": true
     },
     {
-      "source": "/about",
-      "destination": "https://www.reveri.com/about",
-      "permanent": false
-    },
-    {
-      "source": "/media",
-      "destination": "https://www.reveri.com/media",
-      "permanent": false
+      "source": "/frequently-asked-questions",
+      "destination": "/faq",
+      "permanent": true
     },
     {
       "source": "/press",
-      "destination": "https://www.reveri.com/press",
-      "permanent": false
+      "destination": "/media",
+      "permanent": true
     },
     {
-      "source": "/careers",
-      "destination": "https://www.reveri.com/careers",
-      "permanent": false
+      "source": "/join",
+      "destination": "/careers",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/ardra-david-toolkit",
+      "destination": "/api/bridge?path=ardra-david-toolkit"
     },
     {
-      "source": "/faq",
-      "destination": "https://www.reveri.com/faq",
-      "permanent": false
+      "source": "/aubrey-marcus-dr-david-spiegel",
+      "destination": "/api/bridge?path=aubrey-marcus-dr-david-spiegel"
     },
     {
-      "source": "/terms",
-      "destination": "https://www.reveri.com/terms",
-      "permanent": false
+      "source": "/be-present",
+      "destination": "/api/bridge?path=be-present"
     },
     {
-      "source": "/privacy",
-      "destination": "https://www.reveri.com/privacy",
-      "permanent": false
+      "source": "/brain-activity-during-hypnosis",
+      "destination": "/api/bridge?path=brain-activity-during-hypnosis"
+    },
+    {
+      "source": "/dr-david-spiegel-startalk-neil-degrasse-tyson",
+      "destination": "/api/bridge?path=dr-david-spiegel-startalk-neil-degrasse-tyson"
+    },
+    {
+      "source": "/endometriosis-protocol",
+      "destination": "/api/bridge?path=endometriosis-protocol"
+    },
+    {
+      "source": "/forgood",
+      "destination": "/api/bridge?path=forgood"
+    },
+    {
+      "source": "/genes",
+      "destination": "/api/bridge?path=genes"
+    },
+    {
+      "source": "/huberman-lab-dr-david-spiegel",
+      "destination": "/api/bridge?path=huberman-lab-dr-david-spiegel"
+    },
+    {
+      "source": "/hypnosis-enhance-golf-performance",
+      "destination": "/api/bridge?path=hypnosis-enhance-golf-performance"
+    },
+    {
+      "source": "/hypnosis-for-confidence",
+      "destination": "/api/bridge?path=hypnosis-for-confidence"
+    },
+    {
+      "source": "/hypnosis-for-procrastination",
+      "destination": "/api/bridge?path=hypnosis-for-procrastination"
+    },
+    {
+      "source": "/hypnosis-growth-mindset",
+      "destination": "/api/bridge?path=hypnosis-growth-mindset"
+    },
+    {
+      "source": "/hypnosis-vs-placebo",
+      "destination": "/api/bridge?path=hypnosis-vs-placebo"
+    },
+    {
+      "source": "/hypnotizability",
+      "destination": "/api/bridge?path=hypnotizability"
+    },
+    {
+      "source": "/hypnotizability-test",
+      "destination": "/api/bridge?path=hypnotizability-test"
+    },
+    {
+      "source": "/intrusive-thoughts",
+      "destination": "/api/bridge?path=intrusive-thoughts"
+    },
+    {
+      "source": "/kasey-david-protocol",
+      "destination": "/api/bridge?path=kasey-david-protocol"
     },
     {
       "source": "/knowledge",
-      "destination": "https://www.reveri.com/knowledge",
-      "permanent": false
+      "destination": "/api/bridge?path=knowledge"
     },
     {
-      "source": "/knowledge/:slug*",
-      "destination": "https://www.reveri.com/knowledge/:slug*",
-      "permanent": false
+      "source": "/natural-pain-management",
+      "destination": "/api/bridge?path=natural-pain-management"
+    },
+    {
+      "source": "/personalized-plan-control-habit",
+      "destination": "/api/bridge?path=personalized-plan-control-habit"
+    },
+    {
+      "source": "/personalized-plan-deal-with-loss",
+      "destination": "/api/bridge?path=personalized-plan-deal-with-loss"
+    },
+    {
+      "source": "/personalized-plan-eat-intuitively",
+      "destination": "/api/bridge?path=personalized-plan-eat-intuitively"
+    },
+    {
+      "source": "/personalized-plan-exercise-stronger",
+      "destination": "/api/bridge?path=personalized-plan-exercise-stronger"
+    },
+    {
+      "source": "/personalized-plan-fear-of-flying",
+      "destination": "/api/bridge?path=personalized-plan-fear-of-flying"
+    },
+    {
+      "source": "/personalized-plan-growth-mindset",
+      "destination": "/api/bridge?path=personalized-plan-growth-mindset"
+    },
+    {
+      "source": "/personalized-plan-improve-focus",
+      "destination": "/api/bridge?path=personalized-plan-improve-focus"
+    },
+    {
+      "source": "/personalized-plan-manage-pain",
+      "destination": "/api/bridge?path=personalized-plan-manage-pain"
+    },
+    {
+      "source": "/personalized-plan-quit-alcohol",
+      "destination": "/api/bridge?path=personalized-plan-quit-alcohol"
+    },
+    {
+      "source": "/personalized-plan-quit-any-habit",
+      "destination": "/api/bridge?path=personalized-plan-quit-any-habit"
+    },
+    {
+      "source": "/personalized-plan-quit-smoking",
+      "destination": "/api/bridge?path=personalized-plan-quit-smoking"
+    },
+    {
+      "source": "/personalized-plan-relieve-stress-anxiety",
+      "destination": "/api/bridge?path=personalized-plan-relieve-stress-anxiety"
+    },
+    {
+      "source": "/personalized-plan-sleep-better",
+      "destination": "/api/bridge?path=personalized-plan-sleep-better"
+    },
+    {
+      "source": "/privacy-policy",
+      "destination": "/api/bridge?path=privacy-policy"
+    },
+    {
+      "source": "/rethink-stress-pain-workshop",
+      "destination": "/api/bridge?path=rethink-stress-pain-workshop"
+    },
+    {
+      "source": "/reveri-dr-david-spiegel-chris-williamson-modern-wisdom",
+      "destination": "/api/bridge?path=reveri-dr-david-spiegel-chris-williamson-modern-wisdom"
+    },
+    {
+      "source": "/reveri-dr-david-spiegel-dan-harris-10-happier",
+      "destination": "/api/bridge?path=reveri-dr-david-spiegel-dan-harris-10-happier"
+    },
+    {
+      "source": "/reveri-dr-david-spiegel-jay-shetty-on-purpose",
+      "destination": "/api/bridge?path=reveri-dr-david-spiegel-jay-shetty-on-purpose"
+    },
+    {
+      "source": "/reveri-dr-david-spiegel-rich-roll-podcast",
+      "destination": "/api/bridge?path=reveri-dr-david-spiegel-rich-roll-podcast"
+    },
+    {
+      "source": "/reveri-focus",
+      "destination": "/api/bridge?path=reveri-focus"
+    },
+    {
+      "source": "/reveri-for-everything",
+      "destination": "/api/bridge?path=reveri-for-everything"
+    },
+    {
+      "source": "/reveri-for-women",
+      "destination": "/api/bridge?path=reveri-for-women"
+    },
+    {
+      "source": "/reveri-referral-program-tc",
+      "destination": "/api/bridge?path=reveri-referral-program-tc"
+    },
+    {
+      "source": "/reveri-rewire-migraine-pain",
+      "destination": "/api/bridge?path=reveri-rewire-migraine-pain"
+    },
+    {
+      "source": "/reveri-tripping-on-air",
+      "destination": "/api/bridge?path=reveri-tripping-on-air"
+    },
+    {
+      "source": "/safety-of-hypnosis",
+      "destination": "/api/bridge?path=safety-of-hypnosis"
+    },
+    {
+      "source": "/success-stories",
+      "destination": "/api/bridge?path=success-stories"
+    },
+    {
+      "source": "/terms-of-service",
+      "destination": "/api/bridge?path=terms-of-service"
+    },
+    {
+      "source": "/tim-ferriss-dr-david-spiegel-episode-731",
+      "destination": "/api/bridge?path=tim-ferriss-dr-david-spiegel-episode-731"
+    },
+    {
+      "source": "/knowledge/:path*",
+      "destination": "/api/bridge?path=knowledge/:path*"
+    },
+    {
+      "source": "/success-stories/:path*",
+      "destination": "/api/bridge?path=success-stories/:path*"
+    },
+    {
+      "source": "/s/:path*",
+      "destination": "/api/bridge?path=s/:path*"
+    },
+    {
+      "source": "/personalized-plan-:slug",
+      "destination": "/api/bridge?path=personalized-plan-:slug"
     }
   ]
 }

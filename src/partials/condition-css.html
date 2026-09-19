@@ -1,0 +1,26 @@
+<style>
+.pagehero{padding:72px 0 48px}
+.pagehero h1{max-width:18ch}
+.two{display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:start}
+.two h2{font-size:clamp(26px,3vw,36px)}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin-top:38px}
+.step{border-top:2px solid var(--lav80);padding-top:18px}
+.step .num{font-weight:600;font-size:26px;color:var(--lav70);line-height:1;margin-bottom:12px;font-variant-numeric:tabular-nums}
+.step h3{font-size:20px;text-wrap:pretty;margin:0 0 8px}
+.step p{color:var(--ink2);font-size:16px;margin:0}
+.ev{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin:28px 0 18px}
+.ev .v{font-weight:600;font-size:32px;letter-spacing:-.02em;line-height:1;color:var(--ink);font-variant-numeric:tabular-nums;margin-bottom:10px}
+.quotes{margin-top:26px}
+.quote{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px}
+.quote .q{font-family:var(--serif);font-style:italic;font-size:19px;line-height:1.45;color:var(--ink);margin-bottom:14px}
+.quote .who{font-weight:600;font-size:15px}
+.quote .role{color:var(--ink3);font-size:14px}
+.faq{margin-top:22px;max-width:70ch}
+.faq details{border-top:1px solid var(--line);padding:16px 0}
+.faq details:last-child{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;font-weight:600;font-size:18px;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::after{content:"+";color:var(--lav70);font-weight:400;font-size:22px;line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq p{margin:12px 0 0;color:var(--ink2)}
+@media (max-width:980px){.steps,.ev,.two{grid-template-columns:1fr}}
+</style>

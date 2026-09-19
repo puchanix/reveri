@@ -1,0 +1,354 @@
+---
+path: /
+title: Reveri — Sessions with Dr. Spiegel's AI. His method, your situation, ten minutes
+description: Interactive self-hypnosis sessions with Stanford Dr. David Spiegel's AI — his method, applied to your situation, in about ten minutes. It asks what's going on, guides you, and remembers what worked. Relief from pain, stress and sleeplessness. First session free.
+priority: 1.0
+---
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"Organization","name":"Reveri","url":"https://www.reveri.com/","logo":"https://www.reveri.com/assets/reveri-wordmark.svg","founder":{"@type":"Person","name":"David Spiegel","jobTitle":"Professor, Stanford University"}},
+ {"@type":"MobileApplication","name":"Reveri: Relief in Minutes","operatingSystem":"iOS, Android","applicationCategory":"HealthApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD","description":"7-day free trial"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.5","ratingCount":"4400"}},
+ {"@type":"FAQPage","mainEntity":[
+  {"@type":"Question","name":"Is it really Dr. Spiegel?","acceptedAnswer":{"@type":"Answer","text":"Sessions are guided by an AI built on Dr. David Spiegel's method. He designed and trained it and reviews how it works, but he is not present live and does not hear your sessions."}},
+  {"@type":"Question","name":"Is Reveri a replacement for medical care?","acceptedAnswer":{"@type":"Answer","text":"No. Reveri is a wellness product that works alongside your care. Nothing in it is a reason to change or stop anything your doctor has prescribed."}},
+  {"@type":"Question","name":"Does it work for everyone?","acceptedAnswer":{"@type":"Answer","text":"Hypnotic responsiveness varies from person to person. Your first session begins by finding out how you respond, and Dr. Spiegel tunes every session to it."}},
+  {"@type":"Question","name":"Is Reveri crisis support?","acceptedAnswer":{"@type":"Answer","text":"No. If you are in crisis, contact your local emergency services or a crisis line."}}
+ ]}
+]}
+</script>
+
+<style>
+.hero{padding:64px 0 56px}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.davidcard{position:relative;border-radius:24px;overflow:hidden;background:var(--lav80);box-shadow:0 20px 50px rgba(67,38,111,.20);aspect-ratio:4/5;max-width:420px;margin:0 auto;width:100%}
+.davidcard video,.davidcard img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.davidcard .play{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:18px;background:linear-gradient(to top,rgba(28,28,28,.66) 0%,rgba(28,28,28,0) 34%);color:#fff;border:0;cursor:pointer;text-align:left;width:100%}
+.davidcard .play .row{display:flex;align-items:center;gap:12px;align-self:flex-start}
+.davidcard .play .circle{width:46px;height:46px;border-radius:50%;background:#fff;color:var(--lav80);display:flex;align-items:center;justify-content:center;font-size:18px}
+.davidcard .play .dur{font-size:14px;color:#EDE7F6}
+.davidcard.playing .play,.davidcard.playing .cap{display:none}
+.davidcard .cap{position:absolute;left:14px;top:14px;background:rgba(255,255,255,.92);color:var(--lav80);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:6px 10px}
+.press{padding:30px 0 6px;border-bottom:1px solid var(--line)}
+.press .wrap{display:flex;flex-direction:column;align-items:center;gap:6px}
+.press .logos{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px 44px;margin:4px 0 6px;padding:0}
+.press .logos img{height:26px;width:auto;display:block;opacity:.8;transition:opacity .15s}
+.press .logos img[height="30"]{height:30px}.press .logos img[height="25"]{height:25px}.press .logos img[height="24"]{height:24px}
+.press .logos a:hover img{opacity:1}
+.stats{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 56px;padding:22px 0 26px;width:100%}
+.stat{text-align:center}
+.stat .v .star{font-size:20px;vertical-align:.1em;margin-left:2px;color:#C9A227}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin-top:38px}
+.step{border-top:2px solid var(--lav80);padding-top:18px}
+.step .num{font-weight:600;font-size:26px;color:var(--lav70);line-height:1;margin-bottom:12px;font-variant-numeric:tabular-nums}
+.step h3{font-size:20px;text-wrap:pretty;margin:0 0 8px}
+.step p{color:var(--ink2);font-size:16px;margin:0}
+.voices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:34px}
+.voice{background:var(--page);border:1px solid var(--line2);border-radius:var(--r);padding:24px;display:flex;flex-direction:column;gap:14px}
+.voice .head{display:flex;align-items:center;gap:14px}
+.voice .head img{width:56px;height:56px;border-radius:50%;object-fit:cover}
+.voice .who{font-weight:600;color:var(--ink);line-height:1.2}
+.voice .role{font-size:14px;color:var(--ink3)}
+.voice .q{font-family:var(--serif);font-style:italic;font-size:19px;line-height:1.4;color:var(--ink);flex:1}
+.voice .ep{font-size:14px;color:var(--ink3)}
+.voice .ep a{font-weight:500}
+.phones{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:36px}
+.phonewrap{display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px}
+.phone{background:var(--page);border-radius:28px;padding:18px 18px 14px;width:100%;max-width:320px;min-height:540px;display:flex;flex-direction:column;box-shadow:0 14px 34px rgba(28,28,28,.14);text-align:left;font-size:15px;border:1px solid var(--line)}
+.ph-status{display:flex;justify-content:space-between;font-size:11.5px;font-weight:600;margin-bottom:10px;color:var(--ink)}
+.ph-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.ph-logo{font-weight:500;font-size:17px;letter-spacing:-.03em;color:var(--ink)}
+.pey{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--lav70);margin-bottom:6px}
+.ph-display{font-size:22px;font-weight:500;letter-spacing:-.02em;line-height:1.15;color:var(--ink);margin-bottom:10px}
+.ph-display em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--lav70);letter-spacing:0}
+.appt,.insight{background:var(--card);border:1px solid var(--line2);border-radius:12px;padding:12px 13px;margin-bottom:8px}
+.appt{background:linear-gradient(135deg,#ECE1F4,#F7F1F3);border-color:rgba(90,35,144,.10)}
+.appt .when,.insight .lab{font-size:9.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--lav70);margin-bottom:3px}
+.appt .title,.insight .big{font-size:15px;font-weight:600;line-height:1.3;color:var(--ink)}
+.appt .smallt,.insight .smallt{font-size:11.5px;color:var(--ink3);margin-top:3px}
+.pghost{text-align:center;color:var(--lav70);font-weight:500;font-size:12.5px;padding-top:8px;text-decoration:underline;text-underline-offset:3px}
+.said{background:var(--lav10);border-radius:12px;padding:11px 13px;margin-bottom:8px}
+.said .lab{font-size:9.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--lav70);margin-bottom:4px}
+.said .txt{font-family:var(--serif);font-style:italic;font-size:14px;line-height:1.4;color:var(--ink)}
+.phone .chip{padding:6px 10px;font-size:11.5px}
+.phone .chip .go{width:15px;height:15px;font-size:8px}
+.chip.thr{background:var(--lav10);border-color:var(--lav10);color:var(--lav80);font-size:10.5px;padding:5px 9px}
+.askrow{background:var(--card);border:1px solid var(--line2);border-radius:12px;padding:11px 13px;margin-bottom:8px}
+.askrow .q{font-size:13px;font-weight:600;margin-bottom:7px;color:var(--ink)}
+.pfoot{margin-top:auto;border-top:1px solid var(--line);padding-top:10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:500;color:var(--ink3)}
+.ph-tabs{display:flex;justify-content:space-around;padding-top:9px;font-size:11px;font-weight:500;color:var(--muted)}
+.ph-tabs .on{color:var(--lav70)}
+.phonewrap h3{font-size:19px}
+.phonewrap p{color:var(--ink2);font-size:16px;max-width:30em}
+.cond{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:30px}
+.cond a{display:block;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px;transition:transform .12s ease,border-color .12s ease}
+.cond a:hover{transform:translateY(-2px);border-color:var(--lav70)}
+.cond .display{font-size:26px;margin-bottom:8px}
+.cond p{color:var(--ink2);font-size:16px;margin:0 0 14px}
+.cond .go{color:var(--lav70);font-weight:500}
+.ev{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin:32px 0 22px}
+.ev .v{font-weight:600;font-size:34px;letter-spacing:-.02em;line-height:1;color:var(--ink);font-variant-numeric:tabular-nums;margin-bottom:10px}
+.paper{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.note{margin-top:22px;max-width:62em;font-size:14px;color:var(--ink3);line-height:1.55;padding-top:14px;border-top:1px solid var(--line)}
+.note p{margin:0;color:var(--ink3)}
+.note b{color:var(--ink2);font-weight:600}
+.quote{background:var(--page);border:1px solid var(--line2);border-radius:var(--r);padding:24px}
+.quote .eyebrow{font-size:11px;color:var(--ink3);margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.quote .q{font-family:var(--serif);font-style:italic;font-size:19px;line-height:1.45;color:var(--ink);margin-bottom:14px}
+.quote .who{font-weight:600;font-size:15px}
+.quote .role{color:var(--ink3);font-size:14px}
+.doctor{background:var(--lav80);color:#F3EEE9}
+.doctor .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:center}
+.doctor .eyebrow{color:var(--lav25)}
+.doctor h2{color:#fff;font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:0;font-size:clamp(26px,3.4vw,38px)}
+.doctor p{color:#E6DEF3}
+.doctor .portrait{border-radius:24px;overflow:hidden;max-width:360px;box-shadow:0 20px 50px rgba(0,0,0,.30)}
+.doctor .portrait img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover}
+.doctor .cred{color:var(--lav25);font-size:15px}
+.answers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:26px}
+@media (max-width:980px){
+  .hero .wrap,.doctor .wrap{grid-template-columns:1fr}
+  .phones,.cond,.ev,.answers,.steps,.voices,.paper{grid-template-columns:1fr}
+  .davidcard{max-width:360px}
+  .doctor .portrait{max-width:280px}
+}
+@media (max-width:640px){
+  .hero{padding:36px 0 44px}
+  .stat .v{font-size:26px}
+  .stats{gap:14px 28px}
+  .press .logos{gap:12px 26px}
+  .press .logos img{height:20px!important}
+}
+</style>
+
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Interactive self-hypnosis · from Stanford's Dr. David Spiegel</div>
+      <h1>Sessions with Dr.&nbsp;Spiegel's AI. His method, your situation, <em>ten minutes</em>.</h1>
+      <p class="lead">It asks what's going on, guides you, and remembers what worked — so the next session picks up where the last one left off. Whenever you need it.</p>
+      <p class="pull">When nothing else has worked.</p>
+      <div class="cta-row">
+        <a class="btn" href="https://app.reveri.com/survey/onboarding?utm_source=website&utm_medium=hero" data-track="cta_hero">Start your first session free</a>
+      </div>
+      <p class="small" style="margin-top:6px">Free to start. No drugs, no side effects.</p>
+    </div>
+    <div>
+      <div class="davidcard" id="davidcard">
+        <span class="cap">Dr. David Spiegel</span>
+        <video id="davidvideo" preload="none" playsinline controls style="display:none" poster="/assets/david-hero.jpg">
+          <source src="/assets/david-intro.mp4" type="video/mp4">
+        </video>
+        <picture id="davidposter">
+          <source srcset="/assets/david-hero.webp" type="image/webp">
+          <img src="/assets/david-hero.jpg" width="800" height="1000" alt="Dr. David Spiegel in his office at Stanford." fetchpriority="high">
+        </picture>
+        <button class="play" id="davidplay" aria-label="Play: a minute with David">
+          <span class="row"><span class="circle" aria-hidden="true">▶</span><span class="dur">A minute with David · 0:38</span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="press" aria-label="Featured in">
+  <div class="wrap">
+    <ul class="logos">
+      <li><a href="https://www.hubermanlab.com/episode/dr-david-spiegel-using-hypnosis-to-enhance-mental-and-physical-health-and-performance" rel="noopener" target="_blank" data-track="press_huberman"><img src="/assets/logo-huberman-lab.png" alt="Huberman Lab" height="30"></a></li>
+      <li><img src="/assets/logo-nyt.png" alt="The New York Times" height="26"></li>
+      <li><a href="https://www.vogue.co.uk/article/hypnotherapy-mental-health" rel="noopener" target="_blank" data-track="press_vogue"><img src="/assets/logo-vogue.png" alt="Vogue" height="25"></a></li>
+      <li><img src="/assets/logo-womens-health.png" alt="Women's Health" height="25"></li>
+      <li><img src="/assets/logo-mens-health.png" alt="Men's Health" height="24"></li>
+      <li><img src="/assets/logo-the-times.png" alt="The Times" height="25"></li>
+    </ul>
+    <div class="stats">
+      <div class="stat"><div class="v">4.5<span class="star">★</span></div><div class="l">4,400+ App Store ratings</div></div>
+      <div class="stat"><div class="v">84,395</div><div class="l">members in a <a class="textlink" href="https://www.nature.com/articles/s41746-025-02182-0" rel="noopener">peer-reviewed study</a></div></div>
+      <div class="stat"><div class="v">50 years</div><div class="l">of Dr. Spiegel's research at Stanford</div></div>
+    </div>
+  </div>
+</div>
+
+<section id="how">
+  <div class="wrap">
+    <div class="eyebrow">Your first session</div>
+    <h2>Ten minutes. You'll know by the end of it.</h2>
+    <p class="lead">Not a meditation app, and not a recording. Dr. Spiegel asks, you answer, and the session changes with what you say.</p>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><h3>He finds out how you respond</h3><p>A short test — your attention, your hand, a few minutes. Most people find it remarkable, and it tells him how to work with you. <a class="textlink" href="https://app.reveri.com/survey/onboarding?utm_source=website&utm_medium=how&utm_content=hypno_test" data-track="cta_test_how">Try the test →</a></p></div>
+      <div class="step"><div class="num">2</div><h3>He gets to work on what brought you</h3><p>Straight into relief for the thing you came for — pain, a bad night, a week that won't let go — tuned to the way you respond.</p></div>
+      <div class="step"><div class="num">3</div><h3>He tells you what's next</h3><p>What shifted, with numbers. What he wants to try next time, and why. So your second session isn't starting over — it's continuing.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="voices">
+  <div class="wrap">
+    <div class="eyebrow">What they said after trying it</div>
+    <h2>Taken seriously by people who are hard to impress.</h2>
+    <div class="voices">
+      <div class="voice">
+        <div class="head"><img src="/assets/huberman.png" alt="" width="56" height="56" loading="lazy"><div><div class="who">Andrew Huberman</div><div class="role">Neuroscientist · Huberman Lab</div></div></div>
+        <div class="q">"I strongly encourage you to check the Reveri app. There are hypnosis sessions to managing chronic pain, enhancing sleep, focus and more."</div>
+        <div class="ep">Dr. Spiegel hypnotizes Andrew on air. <a href="https://www.hubermanlab.com/episode/dr-david-spiegel-using-hypnosis-to-enhance-mental-and-physical-health-and-performance" rel="noopener" target="_blank" data-track="voice_huberman">Watch the episode →</a></div>
+      </div>
+      <div class="voice">
+        <div class="head"><img src="/assets/ferriss.png" alt="" width="56" height="56" loading="lazy"><div><div class="who">Tim Ferriss</div><div class="role">Author · The Tim Ferriss Show</div></div></div>
+        <div class="q">"It's remarkable. It actually feels really good. My pain dropped to nearly zero. Reveri is incredibly valuable."</div>
+        <div class="ep">Tim's back pain drops by half during the conversation. <a href="https://tim.blog/2024/04/10/dr-david-spiegel-hypnosis/" rel="noopener" target="_blank" data-track="voice_ferriss">Episode #731 →</a></div>
+      </div>
+      <div class="voice">
+        <div class="head"><img src="/assets/richroll.png" alt="" width="56" height="56" loading="lazy"><div><div class="who">Rich Roll</div><div class="role">Author · The Rich Roll Podcast</div></div></div>
+        <div class="q">Mind-body "tranceformation" through hypnosis — a two-hour conversation on the science, the neurobiology and what it's like in practice.</div>
+        <div class="ep">Episode #711. <a href="https://richroll.com/podcast/david-spiegel-711/" rel="noopener" target="_blank" data-track="voice_richroll">Watch →</a></div>
+      </div>
+    </div>
+    <p class="small" style="margin-top:22px">Also on StarTalk with Neil deGrasse Tyson, On Purpose with Jay Shetty, 10% Happier with Dan Harris, Chasing Life with Dr. Sanjay Gupta, Modern Wisdom, and more. <a class="textlink" href="/media">See all →</a></p>
+  </div>
+</section>
+
+<section id="guide">
+  <div class="wrap">
+    <div class="eyebrow">A guide who knows you</div>
+    <h2>The next session picks up where the last one left off.</h2>
+    <p class="lead">No library to browse. No course to finish. No score to keep up. One thing waiting, chosen from what you told him.</p>
+
+    <div class="phones">
+      <div class="phonewrap">
+        <div class="phone" aria-label="Today screen: next with David">
+          <div class="ph-status"><span>7:12</span><span>▮▮▮ ⌁</span></div>
+          <div class="ph-head"><span class="ph-logo">reveri</span><div class="orb"></div></div>
+          <div class="pey">Thursday morning</div>
+          <div class="ph-display">Good morning, <em>Marcel</em>.</div>
+          <div class="beacon"><span>Begin</span></div>
+          <div class="appt"><div class="when">Next with David</div><div class="title">Build on the numbness — and start on the nights</div><div class="smallt">Because your back and your sleep are feeding each other. Last time: 8 → 4. About ten minutes.</div></div>
+          <div class="pghost">Something else this morning</div>
+          <div class="pfoot"><span>Session 2 · Thursday</span></div>
+          <div class="ph-tabs"><span class="on">Today</span><span>You</span></div>
+        </div>
+        <h3>Next with David</h3>
+        <p>You open Reveri and one session is waiting — his next step for you, and the reason.</p>
+      </div>
+
+      <div class="phonewrap">
+        <div class="phone" aria-label="Session close: next time">
+          <div class="ph-status"><span>7:24</span><span>▮▮▮ ⌁</span></div>
+          <div class="ph-head"><span class="ph-logo">reveri</span><div class="orb"></div></div>
+          <div class="pey">Next time</div>
+          <div class="ph-display">I want to see how you're doing on <em>Thursday</em>.</div>
+          <div class="said"><div class="txt">From an 8 to a 4 — the cool numbness did that. Next time I want to build on it, and start on the nights.</div></div>
+          <div class="askrow"><div class="q">When on Thursday?</div><div class="chips"><span class="chip sel">After coffee <span class="go">▸</span></span><span class="chip">After work</span><span class="chip">Before bed</span></div></div>
+        </div>
+        <h3>Next time</h3>
+        <p>Every session ends with what shifted, in numbers, and when he wants to see you next — and why.</p>
+      </div>
+
+      <div class="phonewrap">
+        <div class="phone" aria-label="You screen: where we are">
+          <div class="ph-status"><span>9:07</span><span>▮▮▮ ⌁</span></div>
+          <div class="ph-head"><span class="ph-logo">reveri</span><div class="orb"></div></div>
+          <div class="ph-display">Where <em>we</em> are.</div>
+          <div class="chips" style="margin-bottom:10px"><span class="chip thr">Back pain</span><span class="chip thr">Sleep</span><span class="chip thr">Steady responder</span></div>
+          <div class="said"><div class="lab">David's notes · updated Thursday</div><div class="txt">Your back pain and your bad nights are feeding each other. The cool numbness works for you — twice now. Next I want to take the same approach to falling asleep.</div></div>
+          <div class="insight"><div class="lab">In your words</div><div class="big">Reveri helped in 9 of your last 11 sessions.</div><div class="smallt">Most of the change arrives in the first five minutes.</div></div>
+          <div class="pfoot"><span>11 sessions · since 4 September</span></div>
+          <div class="ph-tabs"><span>Today</span><span class="on">You</span></div>
+        </div>
+        <h3>Where we are</h3>
+        <p>His notes on you — what he thinks is going on, what's next, what to watch — rewritten after every session. And your outcomes, in your own words.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="for">
+  <div class="wrap">
+    <div class="eyebrow">Who it's for</div>
+    <h2>Your mind can change how your body feels.</h2>
+    <p class="lead">Whether that's chronic pain, sleepless nights, or stress that won't let go — Dr. Spiegel can show you how. Start where it hurts most; he'll keep the rest in mind. <a class="textlink" href="/what-it-helps-with">Everything Reveri helps with →</a></p>
+    <div class="cond">
+      <a href="/hypnosis-pain-management" data-track="cond_pain"><div class="display">Pain</div><p>Back, joints, migraines, the kind that has outlasted everything you've tried. Most members feel a meaningful shift in their first session.</p><span class="go">Pain with Reveri →</span></a>
+      <a href="/hypnosis-good-sleep-insomnia" data-track="cond_sleep"><div class="display">Sleep</div><p>Getting to sleep, or staying there. A session that carries you down — and a morning check-in that tells you what changed.</p><span class="go">Sleep with Reveri →</span></a>
+      <a href="/hypnosis-stress-anxiety" data-track="cond_stress"><div class="display">Stress</div><p>The day that won't let go. Ten minutes to turn the volume down — and one tap for relief when something flares.</p><span class="go">Stress with Reveri →</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="evidence">
+  <div class="wrap">
+    <div class="eyebrow">The evidence</div>
+    <h2>Studied for decades. Now validated at digital scale.</h2>
+    <p class="lead">In December 2025, an analysis of 282,893 Reveri stress sessions across 84,395 members was published in <em>npj Digital Medicine</em>. Here is what it found — including the parts that complicate the story.</p>
+    <div class="ev">
+      <div class="card"><div class="v">−1.5</div><p>Average drop in self-rated stress within a single session, on a ten-point scale — consistent across members' first ten sessions.</p></div>
+      <div class="card"><div class="v">0.75</div><p>Effect size (Cohen's <em>d</em>) for that within-session reduction. In behavioural research, that is a large effect.</p></div>
+      <div class="card"><div class="v">Interactive</div><p>Sessions where members answered questions produced significantly greater relief than ones they only listened to. It isn't a stylistic preference — it's the part that does the work.</p></div>
+    </div>
+    <div class="paper">
+      <div class="card"><div class="eyebrow">npj Digital Medicine · 2025</div><h3>Effects of app-delivered self-hypnosis on stress management</h3><p>The study above. Tran, Saperia, Neri, Jo, Kim, Zewde, Nouriani, Kinderman, Jagielo, Faerman, Maldonado &amp; Spiegel.</p><p style="margin-top:12px"><a class="textlink" href="https://www.nature.com/articles/s41746-025-02182-0" rel="noopener">Read the paper →</a></p></div>
+      <div class="card"><div class="eyebrow">The Lancet · 2000</div><h3>Adjunctive non-pharmacological analgesia for invasive medical procedures</h3><p>A randomised trial in which self-hypnosis reduced pain and drug use during invasive procedures. Lang, Benotsch, Fick, Lutgendorf, Berbaum, Berbaum, Logan &amp; Spiegel.</p><p style="margin-top:12px"><a class="textlink" href="https://doi.org/10.1016/S0140-6736(00)02162-0" rel="noopener">Read the trial →</a></p></div>
+    </div>
+    <div class="note">
+      <p><b>What it doesn't show.</b> The 2025 analysis is observational — it looked at what happened in real sessions, without a control group, so it can't prove the sessions caused the change on their own. It also found that relief was consistent from one session to the next: the tenth session works like the first. That's reliability, not a promise that the effect grows by itself. We'd rather tell you that than let you find it.</p>
+      <p><a class="textlink" href="/research">The full picture, including how sessions handle moments of real distress →</a></p>
+    </div>
+  </div>
+</section>
+
+
+<section class="band" id="members">
+  <div class="wrap">
+    <div class="eyebrow">Members</div>
+    <h2>People who had stopped expecting anything.</h2>
+    <div class="grid g2" style="margin-top:30px">
+      <div class="quote"><div class="eyebrow">Pain at an 8</div><div class="q">"The managing pain hypnosis took my pain level from an 8 to 0 in seven minutes. It was hard to believe — still is!"</div><div class="who">Rachael D.</div><div class="role">App Store review</div></div>
+      <div class="quote"><div class="eyebrow">Six months in</div><div class="q">"The interactive mode is almost like the doctor is in the room with you. I really see its positive impact on my everyday life."</div><div class="who">Tatyana</div><div class="role">App Store review</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="doctor" id="doctor">
+  <div class="wrap">
+    <div><div class="portrait"><img src="/assets/david-portrait.jpg" width="900" height="900" alt="Dr. David Spiegel" loading="lazy"></div></div>
+    <div>
+      <div class="eyebrow">The doctor</div>
+      <h2>"I've spent fifty years at Stanford on one question: how the mind changes what the body feels."</h2>
+      <p>"This is that work — in your pocket, whenever you need it. I'll ask what's going on, I'll guide you, and I'll remember what helped. Each time we work together, I know you a little better."</p>
+      <p class="cred">Dr. David Spiegel — Stanford University, co-founder of Reveri, and the method behind every session.</p>
+    </div>
+  </div>
+</section>
+
+<section id="answers">
+  <div class="wrap">
+    <div class="eyebrow">Straight answers</div>
+    <h2>What Reveri is, and what it isn't.</h2>
+    <div class="answers">
+      <div class="card"><h3>It isn't Dr. Spiegel live</h3><p>Every session is guided by an AI built on Dr. Spiegel's method. He designed it, trained it and reviews how it works — but he isn't on the line, and he doesn't hear your sessions. What "remembers you" is the software, kept private to your account.</p></div>
+      <div class="card"><h3>It works alongside your care, not instead of it</h3><p>Reveri is a wellness product. It is not a substitute for medical care, and nothing here is a reason to change or stop anything your doctor has prescribed.</p></div>
+      <div class="card"><h3>It doesn't work identically for everyone</h3><p>How people respond to hypnosis genuinely varies. That's why your first session begins by finding out how <em>you</em> respond — and why every session after is tuned to it.</p></div>
+      <div class="card"><h3>It isn't crisis support</h3><p>If you are in crisis or thinking about harming yourself, please contact your local emergency services or a crisis line. Reveri is not built for that moment, and we would rather say so plainly.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="final band">
+  <div class="wrap">
+    <div class="eyebrow">Ten quiet minutes</div>
+    <div class="display">You'll know if it works before the day is out.</div>
+    <p class="sub lead">Your first session is free. Start it tonight, somewhere you won't be interrupted.</p>
+    <div class="cta-row">
+      <a class="btn" href="https://app.reveri.com/survey/onboarding?utm_source=website&utm_medium=footer_cta" data-track="cta_final">Start your first session free</a>
+    </div>
+    <p class="stores">Free for 7 days, then <a class="textlink" href="/pricing" data-track="cta_pricing">choose a plan</a>. Also on <a class="textlink" href="https://apps.apple.com/us/app/reveri-relief-in-minutes/id1547020650" rel="noopener">the App Store</a> and <a class="textlink" href="https://play.google.com/store/apps/details?id=com.reveri.reverihealth" rel="noopener">Google Play</a>.</p>
+  </div>
+</section>
+
+
+<script>
+(function(){
+  var card=document.getElementById('davidcard'),v=document.getElementById('davidvideo'),btn=document.getElementById('davidplay'),poster=document.getElementById('davidposter');
+  if(btn&&v){btn.addEventListener('click',function(){card.classList.add('playing');poster.style.display='none';v.style.display='block';v.play();window.reveriTrack&&reveriTrack('video_play',{id:'david_intro'});});
+    v.addEventListener('ended',function(){card.classList.remove('playing');v.style.display='none';poster.style.display='';window.reveriTrack&&reveriTrack('video_complete',{id:'david_intro'});});}
+})();
+</script>
